@@ -1,10 +1,4 @@
-1 Giới thiệu mục tiêu và đối tượng của hệ thống
-
-Mục tiêu xây dựng website tour du lịch Việt Nam
-
-Đối tượng sử dụng và phạm vi hệ thống
-
-Phân tích hệ thống
+**Phân tích hệ thống**
 
 2 Yêu cầu chức năng
 
