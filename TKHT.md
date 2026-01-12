@@ -5,12 +5,12 @@
 
 ## Sequence Diagram-thể hiện tìm kiếm
 
-![Sequence Diagram](images/sequecn.png)
+![Sequence Diagram](images/Sequecn.png)
 
 ## Activity Diagram-Sơ đồ thể hiện tìm kiếm lọc hiển thị
 
-![Activity Diagram](images/active.png)
+![Activity Diagram](images/Active.png)
 
 ## Class Diagram-thể hiện các lớp trong chức năng
 
-![Class Diagram](images/class.png)
+![Class Diagram](images/Class.png)
