@@ -23,7 +23,7 @@ Chức năng Đăng nhập / Đăng ký cho phép người dùng tạo tài kho�
 
 ## 3.Biểu đồ UseCase
 
-![](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/Admin/AssignmentWebsiteTravelTour/picture/Use_Case.png?version%3D1768199355668)
+<img src="images/Use_Case.png">
 
 ## 4. Đặc tả Use Case
 
@@ -106,15 +106,15 @@ Mô tả: Cho phép người dùng truy cập hệ thống bằng tài khoản �
 
 ### 5.1. Sequence Diagram đăng ký
 
-![](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/Admin/AssignmentWebsiteTravelTour/picture/SD_Register.png?version%3D1768199760448)
+<img src="images/SD_Register.png">
 
 ### 5.2. Sequence Diagram đăng nhập
 
-![](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/Admin/AssignmentWebsiteTravelTour/picture/SD_Login.png?version%3D1768199825638)
+<img src="images/SD_Login.png">
 
 ## 6. Class Diagram
 
-![](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/Admin/AssignmentWebsiteTravelTour/picture/Class_Diagram.png?version%3D1768199892642)
+<img src="images/Class_Diagram.png">
 
 ## 7. Yêu cầu phi chức năng
 
