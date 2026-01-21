@@ -1,4 +1,4 @@
-# Xác định yêu cầu hệ thống
+# Xác định yêu cầu & phân tích hệ thống cho chức năng đăng nhập đăng kí
  1. Mục đích xác định yêu cầu
 
 Việc xác định yêu cầu hệ thống nhằm làm rõ các chức năng mà hệ thống Website Tour Du lịch Việt Nam cần đáp ứng, cũng như các yêu cầu về chất lượng và phạm vi hoạt động. Đây là cơ sở quan trọng để tiến hành thiết kế, xây dựng và triển khai hệ thống một cách hiệu quả, tránh thiếu sót hoặc phát sinh ngoài phạm vi đề tài.
@@ -53,7 +53,7 @@ Trong phạm vi đề tài, hệ thống có các giới hạn sau:
 
 6. Kết luận
 
-# Phần xác định yêu cầu hệ thống đã làm rõ các chức năng, đối tượng sử dụng và phạm vi hoạt động của Website Tour Du lịch Việt Nam. Đây là cơ sở quan trọng để nhóm tiến hành các bước tiếp theo trong quá trình thiết kế và xây dựng hệ thống.
+# Phân tích hệ thống chức năng booking
 
 * Hệ thống website tour
 du lịch được xây dựng nhằm hỗ trợ người dùng trong việc tìm kiếm, xem thông tin
@@ -143,3 +143,45 @@ danh sách tour**
 * Đảm bảo dữ liệu được truyền tải chính xác
   và an toàn
 
+# Phân tích hệ thống chức năng hiển thị tìm kiếm lọc tour
+1. Yêu cầu chức năng
+
+Xem và tìm kiếm tour du lịch
+
+Đặt tour trực tuyến
+
+Quản lý khách hàng
+
+Quản lý tour và đơn đặt tour
+
+2. Yêu cầu phi chức năng
+
+Giao diện thân thiện, dễ sử dụng
+
+Bảo mật thông tin người dùng
+
+Hoạt động ổn định, tốc độ truy cập tốt
+
+**Thiết kế hệ thống**
+
+1.Thiết kế tổng thể
+
+Mô hình website Client – Server
+
+2.Thiết kế chức năng
+
+Sơ đồ phân rã chức năng
+
+Sơ đồ Use Case tổng quát
+
+3.Thiết kế dữ liệu
+
+Mô hình cơ sở dữ liệu
+
+Các bảng chính: Tour, Khách hàng, Đơn đặt tour, Thanh toán
+
+4.Thiết kế giao diện
+
+Giao diện người dùng
+
+Giao diện quản trị
