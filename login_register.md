@@ -102,21 +102,31 @@ Mô tả: Cho phép người dùng truy cập hệ thống bằng tài khoản �
 
 * Người dùng đăng nhập thành công hoặc thất bại
 
-## 5.Sequence Diagram đăng nhập/đăng ký
+## 5.Activity Diagram đăng ký, đăng nhập, quên mật khẩu
+### 5.1. Activity Diagram đăng ký
+<img src="images/AC_Register.jpg">
 
-### 5.1. Sequence Diagram đăng ký
+### 5.2. Activity Diagram đăng nhập
+<img src="images/AC_Login.jpg">
+
+### 5.3. Activity Diagram quên mật khẩu
+<img src="images/AC_ForgotPassword.jpg">
+
+## 6.Sequence Diagram đăng nhập/đăng ký
+
+### 6.1. Sequence Diagram đăng ký
 
 <img src="images/SD_Register.png">
 
-### 5.2. Sequence Diagram đăng nhập
+### 6.2. Sequence Diagram đăng nhập
 
 <img src="images/SD_Login.png">
 
-## 6. Class Diagram
+## 7. Class Diagram
 
 <img src="images/Class_Diagram.png">
 
-## 7. Yêu cầu phi chức năng
+## 8. Yêu cầu phi chức năng
 
 * Bảo mật mật khẩu (mã hóa)
 * Xác thực dữ liệu đầu vào
