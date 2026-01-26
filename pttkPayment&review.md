@@ -51,11 +51,11 @@ Chức năng Review cho phép khách hàng đánh giá tour du lịch sau khi đ
 
  **Use Case Diagram Payment**
 
-![1768803741473](image/pttkPayment&review/1768803741473.png)
+![1769411563816](image/pttkPayment&review/1769411563816.png)
 
 **Use Case Diagram Review**
 
-![1768803753079](image/pttkPayment&review/1768803753079.png)
+![1769411582655](image/pttkPayment&review/1769411582655.png)
 
 ---
 
@@ -126,11 +126,11 @@ Chức năng Review cho phép khách hàng đánh giá tour du lịch sau khi đ
 
 ### 5.1. Sequence Diagram Payment
 
-![1768803658932](image/pttkPayment&review/1768803658932.png)
+![1769411529350](image/pttkPayment&review/1769411529350.png)
 
 ### 5.2. Sequence Diagram Review
 
-![1768803674994](image/pttkPayment&review/1768803674994.png)
+![1769411540507](image/pttkPayment&review/1769411540507.png)![1768803674994](image/pttkPayment&review/1768803674994.png)
 
 ---
 
@@ -138,17 +138,24 @@ Chức năng Review cho phép khách hàng đánh giá tour du lịch sau khi đ
 
 ### 6.1. Activity Diagram Payment
 
-![1768806622875](image/pttkPayment&review/1768806622875.png)
+![1769410031647](image/pttkPayment&review/1769410031647.png)
 
 ### 6.2. Activity Diagram Review
 
-![1768806640338](image/pttkPayment&review/1768806640338.png)
+![1769410044104](image/pttkPayment&review/1769410044104.png)![1768806640338](image/pttkPayment&review/1768806640338.png)
 
 ---
 
 ## 7. Class Diagram
 
-Cấu trúc các lớp liên quan đến Payment và Review được thể hiện trong  **Hình Class_Payment_Review** .
+
+**Class Diagram Payment**
+
+![1769411438915](image/pttkPayment&review/1769411438915.png)
+
+**Class Diagram Review**
+
+![1769411494399](image/pttkPayment&review/1769411494399.png)
 
 ---
 
