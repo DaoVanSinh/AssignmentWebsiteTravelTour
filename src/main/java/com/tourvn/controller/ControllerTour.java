@@ -14,17 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
  public ControllerTour(ServiceTour tourService) {
         this.tourService = tourService;
     }
-
-    @GetMapping("/search")
+        
+    //Lọc tour theo tiêu chí
+    @GetMapping("/filter")
     public List<EntityTour> searchFlexible(@RequestParam(required = false) String destination,
                                 @RequestParam(required = false) Double price,
                                 @RequestParam(required = false) Integer days) {
         return tourService.searchFlexible(destination, price, days);
     }
-
+//Phân trang mặc định ban đầu trang 0
     @GetMapping("/pageable")
     public Page<EntityTour> getToursPaged(@RequestParam(defaultValue="0") int page){
              return tourService.getTourPageAndSort(page);
+    }
+    @GetMapping("/search")
+    public List<EntityTour> search (@RequestParam(required=false) String keyword){
+          return tourService.search(keyword);
     }
     }
     

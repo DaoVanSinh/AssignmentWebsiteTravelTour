@@ -22,14 +22,18 @@ public class EntityTour {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;       //idTour khóa chính
+     private String nameTour;  //nameTour hiển thị
+     private String nameTourNoAccent;   //dùng dể tìm kiếm theo tên tour (trường hợp người dùng nhập key không dấu)
     private String destination;   // điểm đến
+    private String destinationNoAccent;   // tìm kiếm theo điểm đến
     private Double price;         // giá tiền
-    private int  durationDays; // số ngày diễn ra
+    private Integer  durationDays; // số ngày diễn ra
     private String description;   // mô tả tour
+    private String descriptionNoAccent;    //tìm kiếm thoe mô tả tour
    private LocalDate startDay; //ngày bắt đầu 
     private LocalDate endDay; //ngày kết thúc
     private String hotelName;    //tên khách sạn dừng chân
-    private int availableSeats; //số chỗ còn trống
+    private Integer availableSeats; //số chỗ còn trống
     private String transport; //phương tiện di chuyển
 
    
