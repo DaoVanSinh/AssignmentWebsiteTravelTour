@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import java.util.List;
  
@@ -20,31 +21,32 @@ public class ServiceTour {
     }
 
 //Lọc tour theo tiêu chí
-    public List<EntityTour> searchFlexible(String destination, Double price, Integer days) {
-        if (destination != null && price != null && days != null) {
-            return repositoryTour.findByDestinationAndPriceLessThanAndDurationDays(destination, price, days);
-        } else if (destination != null && price != null) {
-            return repositoryTour.findByDestinationAndPriceLessThan(destination, price);
-        } else if (destination != null && days != null) {
-            return repositoryTour.findByDestinationAndDurationDays(destination, days);
-        } else if (price != null && days != null) {
-            return repositoryTour.findByPriceLessThanAndDurationDays(price, days);
-        } else if (destination != null) {
-            return repositoryTour.findByDestination(destination);
-        } else if (price != null) {
-            return repositoryTour.findByPriceLessThan(price);
-        } else if (days != null) {
-            return repositoryTour.findByDurationDays(days);
-        } else {
-            return repositoryTour.findAll(); // nếu không nhập gì thì trả về tất cả
-        }
+    public List<EntityTour> searchFlexible(String nameTourKeyword, Double priceKeyword, Integer daysKeyword) {
+        Specification<EntityTour> spec =  Specification.where(null);
+        String nameNoAccent=utils.removeAccent(nameTourKeyword).toLowerCase().trim();
+         if (nameTourKeyword != null && !nameTourKeyword.trim().isEmpty()) {
+        spec = spec.and((root, query, cb) ->
+                cb.like(root.get("nameTourNoAccent"), "%" + nameNoAccent + "%")
+        );
+    }
+    if(priceKeyword!=null){
+        spec =spec.and((root,query,cb)->
+        cb.lessThan(root.get("price"),priceKeyword)
+    );
+    }
+    if(daysKeyword!=null){
+        spec=spec.and((root,query,cb)->
+        cb.equal(root.get("durationDays"),daysKeyword)
+    );
+    }
+    return  repositoryTour.findAll(spec);
     }
     //Phân trang size 10
     public Page<EntityTour> getTourPageAndSort(int page){
         Pageable pageable= PageRequest.of(page,10,Sort.by("price").descending());
         return repositoryTour.findAll(pageable);
     }
-    //Tìm kiếm theo tiêu chí
+    //Tìm kiếm theo keyword không dấu
     public List<EntityTour> search(String keyword){
         if(keyword==null||keyword.trim().isEmpty()){
             return repositoryTour.findAll();

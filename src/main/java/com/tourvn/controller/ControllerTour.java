@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
         
     //Lọc tour theo tiêu chí
     @GetMapping("/filter")
-    public List<EntityTour> searchFlexible(@RequestParam(required = false) String destination,
-                                @RequestParam(required = false) Double price,
-                                @RequestParam(required = false) Integer days) {
-        return tourService.searchFlexible(destination, price, days);
+    public List<EntityTour> searchFlexible(@RequestParam(required = false) String destinationKeyword,
+                                @RequestParam(required = false) Double priceKeyword,
+                                @RequestParam(required = false) Integer daysKeyword) {
+        return tourService.searchFlexible(destinationKeyword, priceKeyword, daysKeyword);
     }
 //Phân trang mặc định ban đầu trang 0
     @GetMapping("/pageable")
