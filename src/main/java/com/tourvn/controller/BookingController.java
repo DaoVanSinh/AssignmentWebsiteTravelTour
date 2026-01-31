@@ -1,12 +1,10 @@
 package com.tourvn.controller;
+
 import com.tourvn.service.BookingService;
 import com.tourvn.dto.BookingRequest;
-
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.tourvn.entity.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
@@ -14,9 +12,13 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @PostMapping("/test-create")
-    public String testCreate(@RequestBody BookingRequest request) {
-        // Gọi Service rỗng ở trên
+    @PostMapping
+    public Booking createBooking(@RequestBody BookingRequest request) {
         return bookingService.createBooking(request);
+    }
+
+    @GetMapping("/{id}")
+    public Booking getBooking(@PathVariable Long id) {
+        return bookingService.getBookingById(id);
     }
 }
