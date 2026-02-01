@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
     @RequestMapping("/api/tours")
     public class ControllerTour {
         private final ServiceTour tourService;
- public ControllerTour(ServiceTour tourService) {
+    public ControllerTour(ServiceTour tourService) {
         this.tourService = tourService;
     }
         
@@ -25,11 +25,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 //Phân trang mặc định ban đầu trang 0
     @GetMapping("/pageable")
     public Page<EntityTour> getToursPaged(@RequestParam(defaultValue="0") int page){
-             return tourService.getTourPageAndSort(page);
+            return tourService.getTourPageAndSort(page);
     }
     @GetMapping("/search")
     public List<EntityTour> search (@RequestParam(required=false) String keyword){
-          return tourService.search(keyword);
+            return tourService.search(keyword);
     }
     }
     

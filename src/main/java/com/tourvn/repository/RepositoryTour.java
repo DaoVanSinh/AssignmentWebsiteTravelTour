@@ -15,8 +15,8 @@ public interface RepositoryTour
     @Query("""
         select t from EntityTour t
         where lower(t.nameTourNoAccent) like lower(concat('%', :keyword, '%'))
-           or lower(t.destinationNoAccent) like lower(concat('%', :keyword, '%'))
-           or lower(t.descriptionNoAccent) like lower(concat('%', :keyword, '%'))
+        or lower(t.destinationNoAccent) like lower(concat('%', :keyword, '%'))
+        or lower(t.descriptionNoAccent) like lower(concat('%', :keyword, '%'))
     """)
     List<EntityTour> searchByKeyWord(@Param("keyword") String keyword);
 }
