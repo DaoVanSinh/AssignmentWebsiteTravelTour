@@ -5,6 +5,7 @@
 - Dùng annotation @Entity
 
 Ví dụ:
+
 - Booking.java   → bảng booking
 - Tour.java      → bảng tour
 - User.java      → bảng user
