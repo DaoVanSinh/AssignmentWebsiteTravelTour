@@ -22,4 +22,6 @@ public class Tour {
     private Double price;
 
     private String imageUrl;
+
+    private String title;
 }
