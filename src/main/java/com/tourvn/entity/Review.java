@@ -11,6 +11,10 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name = "tour_id")
     private Long tourId;
 
     private String email; 
@@ -20,19 +24,22 @@ public class Review {
     @Column(columnDefinition = "TEXT")
     private String comment;
 
+    @Column(name = "review_date")
     private LocalDateTime reviewDate;
 
     public Review() {
     }
 
-    public Review(Long tourId, String email, int rating, String comment) {
+    public Review(Long tourId,Long userId, String email, int rating, String comment) {
         this.tourId = tourId;
+        this.userId = userId;
         this.email = email;
         this.rating = rating;
         this.comment = comment;
         this.reviewDate = LocalDateTime.now();
     }
 
+    
     public Long getId() {
         return id;
     }
@@ -79,6 +86,14 @@ public class Review {
 
     public void setReviewDate(LocalDateTime reviewDate) {
         this.reviewDate = reviewDate;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
 } 

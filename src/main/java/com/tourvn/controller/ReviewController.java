@@ -1,25 +1,34 @@
 package com.tourvn.controller;
 
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+import com.tourvn.dto.ReviewRequest;
+import com.tourvn.entity.Review;
+import com.tourvn.service.ReviewService;
 
 @RestController
 @RequestMapping("/api/reviews")
 public class ReviewController {
 
-    // Dependency Injection ReviewService 
-    
-    @PostMapping("/{bookingId}")
-    public String createReview(
-            @PathVariable Long bookingId,
-            @RequestParam int rating,
-            @RequestParam String comment) {
+    private final ReviewService reviewService;
 
-        return "Review API is working";
+    public ReviewController(ReviewService reviewService) {
+        this.reviewService = reviewService;
+    }
+
+    @PostMapping
+    public Review createReview(@RequestBody ReviewRequest request) {
+        return reviewService.createReview(
+                request.getTourId(),
+                request.getEmail(),
+                request.getRating(),
+                request.getComment());
     }
 
     @GetMapping("/tour/{tourId}")
-    public String getReviewsByTour(@PathVariable Long tourId) {
-        return "Get reviews for tour: " + tourId;
+    public List<Review> getReviewsByTour(@PathVariable Long tourId) {
+
+        return reviewService.getReviewsByTour(tourId);
     }
 }
-

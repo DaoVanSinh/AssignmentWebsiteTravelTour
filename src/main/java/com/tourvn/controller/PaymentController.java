@@ -11,16 +11,16 @@ public class PaymentController {
 
     private final PaymentService paymentService;
 
-    public PaymentController (PaymentService paymentSevice){
+    public PaymentController(PaymentService paymentSevice) {
         this.paymentService = paymentSevice;
     }
 
     @PostMapping
-    public Payment createPayment(@RequestBody PaymentRequest request){
+    public Payment createPayment(@RequestBody PaymentRequest request) {
 
         return paymentService.createPayment(request);
     }
-    
+
     @GetMapping
     public String getAllPayments() {
         return "Get all payments API";
@@ -31,4 +31,3 @@ public class PaymentController {
         return "Get payment by id: " + id;
     }
 }
-
