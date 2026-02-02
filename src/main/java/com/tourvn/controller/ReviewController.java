@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewController {
 
     // Dependency Injection ReviewService 
-
-    // Tạo review
+    
     @PostMapping("/{bookingId}")
     public String createReview(
             @PathVariable Long bookingId,

@@ -11,7 +11,6 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // --> booking
     @Column(nullable = false)
     private Long bookingId;
 
