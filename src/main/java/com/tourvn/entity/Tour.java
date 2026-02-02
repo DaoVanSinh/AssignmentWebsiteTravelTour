@@ -14,9 +14,9 @@ public class Tour {
     private Long id;
 
     @Column(nullable = false)
+    private String title;
 
-    @Column(columnDefinition = "TEXT", nullable = true) 
-    
+    @Column(columnDefinition = "TEXT", nullable = true)
     private String description;
 
     private Double price;
