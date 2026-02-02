@@ -13,13 +13,13 @@ public class Tour {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String title;
-
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", nullable = true) 
+    
     private String description;
 
     private Double price;
 
     private String imageUrl;
+
+    private String title;
 }

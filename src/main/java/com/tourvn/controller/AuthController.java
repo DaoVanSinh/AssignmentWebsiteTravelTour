@@ -1,37 +1,31 @@
-package com.tourvn.controller;
+ package com.tourvn.controller;
 
+import org.springframework.web.bind.annotation.*;
+import java.util.Map;
+import com.tourvn.entity.User;
 import com.tourvn.service.UserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+
+@RestController
+@RequestMapping("/api/auth")
 public class AuthController {
-
     private final UserService userService;
-
-    public AuthController(UserService userService) {
+    
+    public AuthController(UserService userService){
         this.userService = userService;
     }
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String registerPage() {
-        return "register";
-    }
-
     @PostMapping("/register")
-    public String handleRegister(
-            @RequestParam String username,
-            @RequestParam String password,
-            @RequestParam String email
-    ) {
-        userService.register(username, password, email);
-        return "redirect:/login";
+    public User register(@RequestBody Map<String, String> request){
+        return userService.register(
+        request.get("name"),
+        request.get("email"),
+        request.get("phone"),
+        request.get("password"));
+    }
+
+    @PostMapping("/login")
+    public User login(@RequestBody Map<String, String> request){
+        return userService.login(request.get("email"), request.get("password"));
     }
 }

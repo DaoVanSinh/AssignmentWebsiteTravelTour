@@ -1,5 +1,5 @@
 package com.tourvn.service;
 
-public class PaymentSevice {
+public class ReviewService {
     
 }
