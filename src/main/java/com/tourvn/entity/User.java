@@ -1,6 +1,7 @@
 package com.tourvn.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -10,8 +11,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
+
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -25,6 +27,9 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
+
     public User(){
 
     }
@@ -33,12 +38,12 @@ public class User {
         return id;
     }
 
-    public String getname() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setname(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -72,4 +77,10 @@ public class User {
     public void setRole(String role){
         this.role = role;
     }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
 }
