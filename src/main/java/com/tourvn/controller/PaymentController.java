@@ -1,7 +1,8 @@
 package com.tourvn.controller;
 
 import org.springframework.web.bind.annotation.*;
-
+import com.tourvn.dto.PaymentRequest;
+import com.tourvn.entity.Payment;
 import com.tourvn.service.PaymentService;
 
 @RestController
@@ -14,13 +15,10 @@ public class PaymentController {
         this.paymentService = paymentSevice;
     }
 
-    // Tạo thanh toán
-    @PostMapping("/{bookingId}")
-    public String createPayment(
-            @PathVariable Long bookingId,
-            @RequestParam String method) {
+    @PostMapping
+    public Payment createPayment(@RequestBody PaymentRequest request){
 
-        return "Payment API is working";
+        return paymentService.createPayment(request);
     }
     
     @GetMapping

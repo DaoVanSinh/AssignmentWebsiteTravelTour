@@ -13,9 +13,9 @@ public class Review {
 
     private Long tourId;
 
-    private String email;  // người review
+    private String email;
 
-    private int rating; // 1 - 5
+    private int rating; 
 
     @Column(columnDefinition = "TEXT")
     private String comment;
