@@ -1,5 +1,6 @@
 package com.tourvn.service;
 
+import com.tourvn.DTO.DtoSearchAndFilter;
 import com.tourvn.Utils.utils;
 import com.tourvn.entity.EntityTour;
 import com.tourvn.repository.RepositoryTour;
@@ -20,40 +21,36 @@ public class ServiceTour {
         this.repositoryTour = repositoryTour;
     }
 
-//Lọc tour theo tiêu chí
-    public List<EntityTour> searchFlexible(String nameTourKeyword, Double priceKeyword, Integer daysKeyword) {
+//search--filter--page
+    public Page<EntityTour> searchAndFilter(DtoSearchAndFilter dto,Pageable pageable) {
         Specification<EntityTour> spec =  Specification.where(null);
-        String nameNoAccent=utils.removeAccent(nameTourKeyword).toLowerCase().trim();
-         if (nameTourKeyword != null && !nameTourKeyword.trim().isEmpty()) {
-        spec = spec.and((root, query, cb) ->
-                cb.like(root.get("nameTourNoAccent"), "%" + nameNoAccent + "%")
+         if (dto.getKeyword()!= null && !dto.getKeyword().trim().isEmpty()) {
+             String nameNoAccent=utils.removeAccent(dto.getKeyword())
+             .toLowerCase()
+             .trim();
+        spec = spec.and((root, query, cb) ->    
+        cb.or(
+            cb.like(root.get("nameTourNoAccent"), "%" + nameNoAccent + "%"),
+            cb.like(root.get("destinationNoAccent"),"%"+nameNoAccent+"%"),
+            cb.like(root.get("descriptionNoAccent"),"%"+nameNoAccent+"%")
+        )
         );
     }
-    if(priceKeyword!=null){
+    if(dto.getMinPrice()!=null){
         spec =spec.and((root,query,cb)->
-        cb.lessThan(root.get("price"),priceKeyword)
+        cb.greaterThanOrEqualTo(root.get("price"),dto.getMinPrice())
     );
-    }
-    if(daysKeyword!=null){
+    if(dto.getMaxPrice()!=null){
         spec=spec.and((root,query,cb)->
-        cb.equal(root.get("durationDays"),daysKeyword)
+       cb.lessThanOrEqualTo(root.get("price"),dto.getMaxPrice())
     );
     }
-    return  repositoryTour.findAll(spec);
     }
-    //Phân trang size 10
-    public Page<EntityTour> getTourPageAndSort(int page){
-        Pageable pageable= PageRequest.of(page,10,Sort.by("price").descending());
-        return repositoryTour.findAll(pageable);
+    if(dto.getDays()!=null){
+        spec=spec.and((root,query,cb)->
+        cb.equal(root.get("durationDays"),dto.getDays())
+    );
     }
-    //Tìm kiếm theo keyword không dấu
-    public List<EntityTour> search(String keyword){
-        if(keyword==null||keyword.trim().isEmpty()){
-            return repositoryTour.findAll();
-        }
-        String temp= utils.removeAccent(keyword);
-        return repositoryTour.searchByKeyWord(temp);
-
+    return  repositoryTour.findAll(spec,pageable);
     }
-
 }
