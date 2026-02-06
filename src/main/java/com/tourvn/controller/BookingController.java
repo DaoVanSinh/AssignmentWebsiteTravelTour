@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 @RestController       //Bộ điều khiển API
 @RequestMapping("/api/bookings")      //URL cho bookings
 public class BookingController {
@@ -25,8 +26,7 @@ public class BookingController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                .body("Lỗi hệ thống: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Loi he thong: " + e.getMessage());
         }
     }
 
@@ -34,10 +34,28 @@ public class BookingController {
     public ResponseEntity<?> getBooking(@PathVariable Long id) {
         Booking booking = bookingService.getBookingById(id);
         if (booking == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                                .body("Không tìm thấy booking với ID: " + id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Khong tim thay booking voi ID: " + id);
         }
         return ResponseEntity.ok(booking);
     }
 
+    @PutMapping("/{id}/cancel")
+    public ResponseEntity<?> cancelBooking(@PathVariable Long id) {
+        try {
+            Booking booking = bookingService.cancelBooking(id);
+            return ResponseEntity.ok(booking);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/customer/{email}")
+public ResponseEntity<?> getBookingsByCustomer(@PathVariable String email) {
+    try {
+        List<Booking> bookings = bookingService.getBookingsByEmail(email);
+        return ResponseEntity.ok(bookings);
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Lỗi: " + e.getMessage());
+    }
+    }
 }

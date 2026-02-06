@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 @Table(name = "bookings")
 public class Booking {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // khóa chính
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //
     private Long id;
 
     @Column(name = "customer_name", nullable = false)
@@ -27,7 +27,7 @@ public class Booking {
     @Column(name = "booking_date")
     private LocalDateTime bookingDate;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) //trạng thái booking lưu dưới dạng text
     private BookingStatus status;
 
     // ===== GETTER & SETTER =====
