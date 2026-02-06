@@ -31,6 +31,6 @@ public class AuthController {
 
     @PostMapping("/forgot-password")
     public User forgotPasssword(@RequestBody Map<String, String> request){
-        return userService.forgotPassword(request.get("email"));
+        return userService.forgotPassword(request.get("email"),request.get("newPassword"));
     }
 }

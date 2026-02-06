@@ -47,8 +47,14 @@ public class UserService{
         return user;
     }
 
-    public User forgotPassword(String email){
+    public User forgotPassword(String email,String newPasssword){
         User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Không tìm thấy email"));
-        return user;
+
+        if(newPasssword.length() < 6){
+            throw new RuntimeException("Mật khẩu mới phải từ 6 ký tự trở lên!");
+        }
+
+        user.setPassword(newPasssword);
+        return userRepository.save(user);
     }
 }
