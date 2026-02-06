@@ -21,6 +21,7 @@ public class ReviewController {
     public Review createReview(@RequestBody ReviewRequest request) {
         return reviewService.createReview(
                 request.getTourId(),
+                request.getUserId(),
                 request.getEmail(),
                 request.getRating(),
                 request.getComment());

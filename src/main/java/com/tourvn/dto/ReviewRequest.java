@@ -2,10 +2,12 @@ package com.tourvn.dto;
 
 public class ReviewRequest {
     private long tourId;
+    private long userId;
     private String email;
     private int rating;
     private String comment;
 
+    
     public long getTourId() {
         return tourId;
     }
@@ -36,5 +38,13 @@ public class ReviewRequest {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

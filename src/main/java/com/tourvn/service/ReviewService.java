@@ -16,7 +16,7 @@ public class ReviewService {
         this.reviewRepository = reviewRepository;
     }
 
-    public Review createReview(Long tourId, String email, int rating, String comment) {
+    public Review createReview(Long tourId,Long userId, String email, int rating, String comment) {
 
         if (rating < 1 || rating > 5) {
             throw new RuntimeException("số sao phải từ 1 đến 5");
