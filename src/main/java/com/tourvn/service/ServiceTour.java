@@ -11,46 +11,28 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import com.tourvn.Specification.TourSpec;
  
 @Service
 public class ServiceTour {
 
    private final RepositoryTour repositoryTour; 
-    // Khai báo repository với tên mới
    public ServiceTour(RepositoryTour repositoryTour) {
         this.repositoryTour = repositoryTour;
     }
 
 //search--filter--page
     public Page<EntityTour> searchAndFilter(DtoSearchAndFilter dto,Pageable pageable) {
-        Specification<EntityTour> spec =  Specification.where(null);
-         if (dto.getKeyword()!= null && !dto.getKeyword().trim().isEmpty()) {
-             String nameNoAccent=utils.removeAccent(dto.getKeyword())
-             .toLowerCase()
-             .trim();
-        spec = spec.and((root, query, cb) ->    
-        cb.or(
-            cb.like(root.get("nameTourNoAccent"), "%" + nameNoAccent + "%"),
-            cb.like(root.get("destinationNoAccent"),"%"+nameNoAccent+"%"),
-            cb.like(root.get("descriptionNoAccent"),"%"+nameNoAccent+"%")
-        )
-        );
+        validatePrice(dto.getMinPrice(),dto.getMaxPrice());
+        Specification<EntityTour> spec =  TourSpec.buildSpec(dto);
+
+            return repositoryTour.findAll(spec,pageable);
     }
-    if(dto.getMinPrice()!=null){
-        spec =spec.and((root,query,cb)->
-        cb.greaterThanOrEqualTo(root.get("price"),dto.getMinPrice())
-    );
-    if(dto.getMaxPrice()!=null){
-        spec=spec.and((root,query,cb)->
-       cb.lessThanOrEqualTo(root.get("price"),dto.getMaxPrice())
-    );
-    }
-    }
-    if(dto.getDays()!=null){
-        spec=spec.and((root,query,cb)->
-        cb.equal(root.get("durationDays"),dto.getDays())
-    );
-    }
-    return  repositoryTour.findAll(spec,pageable);
+    private void validatePrice(Double min, Double max){
+        if(min!=null && max!=null
+        &&min>max){
+        throw new IllegalArgumentException(
+            "Giá tối thiểu phải nhỏ hơn hoặc bằng giá tối đa");
+        }
     }
 }

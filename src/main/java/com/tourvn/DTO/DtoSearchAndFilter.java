@@ -9,16 +9,16 @@ public class DtoSearchAndFilter {
     String keyword;
 
 
-@Min(value=0,message="Số tiền tối thiểu không được âm")
+@Min(value=0)
     Double minPrice;
 
 
-@Max(value=1000000000,message="Số tiền quá lớn")
+@Max(value=1000000000)
     Double maxPrice;
 
 
 
-@Min(value = 1, message = "Số ngày tối thiểu là 1")
-@Max(value = 31, message = "Số ngày tối đa là 31")
+@Min(value = 1)
+@Max(value = 31)
     Integer days;
 }
