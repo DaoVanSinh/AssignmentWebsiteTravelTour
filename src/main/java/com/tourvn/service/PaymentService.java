@@ -20,7 +20,7 @@ public class PaymentService {
             request.getBookingId(),
             request.getAmount(),
             request.getPaymentMethod(),
-            "pending"
+            request.getPaymentStatus()
         );
         return paymentRepository.save(payment);
     }
