@@ -1,6 +1,6 @@
 package com.tourvn.service;
 
-import com.tourvn.DTO.DtoSearchAndFilter;
+import com.tourvn.dto.DtoSearchAndFilter;
 import com.tourvn.Utils.utils;
 import com.tourvn.entity.EntityTour;
 import com.tourvn.repository.RepositoryTour;

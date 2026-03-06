@@ -1,4 +1,4 @@
-package com.tourvn.DTO;
+package com.tourvn.dto;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;

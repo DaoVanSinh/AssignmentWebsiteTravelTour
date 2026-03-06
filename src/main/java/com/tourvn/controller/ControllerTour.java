@@ -1,5 +1,5 @@
     package com.tourvn.controller;
-    import com.tourvn.DTO.DtoSearchAndFilter;
+    import com.tourvn.dto.DtoSearchAndFilter;
 import com.tourvn.entity.EntityTour;
     import com.tourvn.service.ServiceTour;
 
