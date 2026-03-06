@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import com.tourvn.dto.PaymentRequest;
 import com.tourvn.entity.Payment;
 import com.tourvn.service.PaymentService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/payments")
@@ -22,10 +23,10 @@ public class PaymentController {
     }
 
     @GetMapping
-    public String getAllPayments() {
-        return "Get all payments API";
+    public List<Payment> getAllPayments() {
+        return paymentService.getAllPayment();
     }
-
+    
     @GetMapping("/{id}")
     public Payment getPaymentById(@PathVariable Long id) {
         return paymentService.getPaymentById(id);

@@ -19,8 +19,7 @@ public class PaymentService {
         Payment payment = new Payment(
             request.getBookingId(),
             request.getAmount(),
-            request.getPaymentMethod(),
-            request.getPaymentStatus()
+            request.getPaymentMethod()
         );
         return paymentRepository.save(payment);
     }
