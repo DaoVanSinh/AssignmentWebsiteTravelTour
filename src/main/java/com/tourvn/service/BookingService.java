@@ -11,4 +11,6 @@ public interface BookingService {
     Booking cancelBooking(Long id);
 
     List<Booking> getBookingsByEmail(String email);
+
+    List<Booking> getAllBookings();
 }

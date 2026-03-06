@@ -79,4 +79,9 @@ public class BookingServiceImpl implements BookingService {
     public List<Booking> getBookingsByEmail(String email) {
         return bookingRepository.findByEmailOrderByBookingDateDesc(email);
     }
+
+    @Override
+    public List<Booking> getAllBookings() {
+        return bookingRepository.findAll();
+}
 }

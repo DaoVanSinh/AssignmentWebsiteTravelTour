@@ -19,25 +19,16 @@ public class BookingController {
     private BookingService bookingService;
 
     @PostMapping
-    public ResponseEntity<?> createBooking(@Valid @RequestBody BookingRequest request) {
-        try {
-            Booking booking = bookingService.createBooking(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body(booking);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Loi he thong: " + e.getMessage());
-        }
-    }
+public ResponseEntity<Booking> createBooking(@Valid @RequestBody BookingRequest request) {
+    Booking booking = bookingService.createBooking(request);
+    return ResponseEntity.status(HttpStatus.CREATED).body(booking);
+}
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getBooking(@PathVariable Long id) {
-        Booking booking = bookingService.getBookingById(id);
-        if (booking == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Khong tim thay booking voi ID: " + id);
-        }
-        return ResponseEntity.ok(booking);
-    }
+public ResponseEntity<Booking> getBooking(@PathVariable Long id) {
+    Booking booking = bookingService.getBookingById(id);
+    return ResponseEntity.ok(booking);
+}
 
     @PutMapping("/{id}/cancel")
     public ResponseEntity<?> cancelBooking(@PathVariable Long id) {
@@ -58,4 +49,10 @@ public ResponseEntity<?> getBookingsByCustomer(@PathVariable String email) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Lỗi: " + e.getMessage());
     }
     }
+
+    @GetMapping
+    public ResponseEntity<List<Booking>> getAllBookings() {
+    List<Booking> bookings = bookingService.getAllBookings();
+    return ResponseEntity.ok(bookings);
+}
 }

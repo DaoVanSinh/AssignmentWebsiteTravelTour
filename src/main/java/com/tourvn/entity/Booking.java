@@ -80,7 +80,7 @@ public class Booking {
         this.bookingDate = bookingDate;
     }
 
-    public BookingStatus getStatus() {
+    public BookingStatus getStatus() { 
         return status;
     }
 
