@@ -16,16 +16,21 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public User register(@RequestBody Map<String, String> request){
+    public User register(@RequestBody User user){
         return userService.register(
-        request.get("name"),
-        request.get("email"),
-        request.get("phone"),
-        request.get("password"));
+        user.getFullName(),
+        user.getEmail(),
+        user.getPhone(),
+        user.getPassword());
     }
 
     @PostMapping("/login")
     public User login(@RequestBody Map<String, String> request){
         return userService.login(request.get("email"), request.get("password"));
+    }
+
+    @PostMapping("/forgot-password")
+    public User forgotPasssword(@RequestBody Map<String, String> request){
+        return userService.forgotPassword(request.get("email"),request.get("newPassword"));
     }
 }

@@ -14,7 +14,7 @@ public class UserService{
         this.userRepository = userRepository;
     }
 
-    public User register(String name,String email,String phone,String password){
+    public User register(String fullName,String email,String phone,String password){
         if(userRepository.existsByEmail(email)){
             throw new RuntimeException("Email đã tồn tại");
         }
@@ -28,7 +28,7 @@ public class UserService{
         }
 
         User user = new User();
-        user.setname(name);
+        user.setFullName(fullName);
         user.setEmail(email);
         user.setPhone(phone);
         user.setPassword(password);
@@ -45,5 +45,16 @@ public class UserService{
         }
 
         return user;
+    }
+
+    public User forgotPassword(String email,String newPasssword){
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Không tìm thấy email"));
+
+        if(newPasssword.length() < 6){
+            throw new RuntimeException("Mật khẩu mới phải từ 6 ký tự trở lên!");
+        }
+
+        user.setPassword(newPasssword);
+        return userRepository.save(user);
     }
 }
