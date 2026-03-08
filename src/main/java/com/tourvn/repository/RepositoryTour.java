@@ -20,3 +20,5 @@ public interface RepositoryTour
     """)
     List<EntityTour> searchByKeyWord(@Param("keyword") String keyword);
 }
+
+                JpaSpecificationExecutor<EntityTour> {}

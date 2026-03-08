@@ -1,3 +1,4 @@
+
 package com.tourvn.controller;
 
 import com.tourvn.entity.EntityTour;
@@ -5,6 +6,11 @@ import com.tourvn.service.ServiceTour;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.springframework.data.domain.Page;
+import com.tourvn.dto.DtoSearchAndFilter;
+import jakarta.validation.Valid;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,4 +41,20 @@ public class ControllerTour {
     public List<EntityTour> search(@RequestParam(required = false) String keyword) {
         return tourService.search(keyword);
     }
+    
+    @GetMapping
+    public Page<EntityTour> getTour(
+        //search--filter
+    @Valid DtoSearchAndFilter dto ,
+        //page
+        @PageableDefault(
+            size=10,
+            sort="price",
+            direction= Sort.Direction.DESC
+        )Pageable pageable
+    ){
+        return tourService.searchAndFilter(dto,pageable);
+    }
+    
 }
+
