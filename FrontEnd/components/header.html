@@ -1,0 +1,88 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
+<header>
+  <div class="top">
+    <span><i class="fas fa-phone"></i> 0123.456.789</span>
+    <span><i class="fas fa-envelope"></i> contactHUMG@travel.com</span>
+    <span
+      ><i class="fas fa-map-marker-alt"></i> Số 18, Phố Viên, Bắc Từ Liêm, Hà
+      Nội</span
+    >
+  </div>
+
+  <nav class="mainHeader">
+    <div class="logo">
+      <img src="../images/imgCode/logoHUMG.jpg" alt="HUMG travel" />
+    </div>
+
+    <ul class="menu">
+      <li><a href="#" class="active">Trang chủ</a></li>
+      <li><a href="#">Tour trong nước</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+
+    <div class="header-icons">
+      <div class="cart-wrapper">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge"></span>
+      </div>
+    </div>
+  </nav>
+</header>
+<style>
+  .top {
+    background-color: #2f49dc;
+    color: white;
+    display: flex;
+    justify-content: right;
+    padding: 8px 0;
+    font-size: 14px;
+    gap: 30px;
+  }
+  .mainHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: white;
+    font-size: 30px;
+  }
+  .logo img {
+    height: 60px;
+  }
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 22px;
+  }
+  cart-wrapper {
+    position: relative;
+    cursor: pointer;
+  }
+  .menu li {
+    list-style: none;
+  }
+  .menu li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin: 0 20px;
+    transition: color 0.3s;
+  }
+  .menu li a:hover,
+  .menu li a.active {
+    color: #2f49dc;
+  }
+</style>
