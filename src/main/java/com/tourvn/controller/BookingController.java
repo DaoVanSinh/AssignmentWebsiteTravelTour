@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController       //Bộ điều khiển API
 @RequestMapping("/api/bookings")      //URL cho bookings
+@CrossOrigin(origins = "*")
 public class BookingController {
 
     @Autowired
