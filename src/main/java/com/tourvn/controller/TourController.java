@@ -9,10 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tours/manage")
-<<<<<<< HEAD
-=======
 @CrossOrigin("*")
->>>>>>> origin/toan-branch
 public class TourController {
 
     @Autowired
