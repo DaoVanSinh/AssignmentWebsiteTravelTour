@@ -4,24 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Review</title>
     <link rel="stylesheet" href="../css/review.css">
 </head>
 
 <body>
     <div class="main">
+            <div class="head">
 
+                <div class="left-head">
+                    <div class="score">4.9</div>
+                    <div class="stars">★★★★★</div>
+                    <p>Tuyệt vời</p>
+                    <span>10 đánh giá</span>
+                </div>
+
+                <div class="right-head">
+
+                    <div class="boder">
+                        <span>Tuyệt vời</span>
+                        <div class="column">
+                            <div class="fill" id="bar5"></div>
+                        </div>
+                        <span id="count5">0</span>
+                    </div>
+
+                    <div class="boder">
+                        <span>Rất tốt</span>
+                        <div class="column">
+                            <div class="fill" id="bar4"></div>
+                        </div>
+                        <span id="count4">0</span>
+                    </div>
+
+                    <div class="boder">
+                        <span>Hài lòng</span>
+                        <div class="column">
+                            <div class="fill" id="bar3"></div>
+                        </div>
+                        <span id="count3">0</span>
+                    </div>
+
+                    <div class="boder">
+                        <span>Trung bình</span>
+                        <div class="column">
+                            <div class="fill" id="bar2"></div>
+                        </div>
+                        <span id="count2">0</span>
+                    </div>
+
+                    <div class="boder">
+                        <span>Kém</span>
+                        <div class="column">
+                            <div class="fill" id="bar1"></div>
+                        </div>
+                        <span id="count1">0</span>
+                    </div>
+                </div>
+            </div>
         <h2>HÃY ĐỂ LẠI ĐÁNH GIÁ CỦA BẠN</h2>
 
-        <div class="main-from">
-
-            <input type="text" placeholder="Tên :" id="name">
+        <div class="main-form">
             <input type="email" placeholder="Email :" id="email">
         </div>
 
-        <input type="text" placeholder="Tiêu đề : " id="title">
-
-        <textarea placeholder="Nội dung : " id="comment"></textarea>
+        <textarea placeholder="Nội dung :" id="comment"></textarea>
 
         <h3>Đánh giá</h3>
 
@@ -31,12 +78,15 @@
             <i class="star" data-value="3">★</i>
             <i class="star" data-value="4">★</i>
             <i class="star" data-value="5">★</i>
-
         </div>
 
         <button onclick="submit()">ĐĂNG BÀI ĐÁNH GIÁ</button>
+
+        <div id="list"></div>
+
     </div>
-     <script src="../js/review.js"></script>
+
+    <script src="../js/review.js"></script>
 </body>
 
 </html>

@@ -8,5 +8,6 @@ import com.tourvn.entity.Review;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     List<Review> findByTourId(Long tourId);
+    boolean existsByUserIdAndTourId(Long userId, Long tourId);
 }
 
