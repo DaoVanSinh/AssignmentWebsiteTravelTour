@@ -11,7 +11,6 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // --> booking
     @Column(nullable = false)
     private Long bookingId;
 
@@ -26,11 +25,11 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(Long bookingId, Double amount, String paymentMethod, String paymentStatus) {
+    public Payment(Long bookingId, Double amount, String paymentMethod) {
         this.bookingId = bookingId;
         this.amount = amount;
         this.paymentMethod = paymentMethod;
-        this.paymentStatus = paymentStatus;
+        this.paymentStatus = "PENDING";
         this.paymentDate = LocalDateTime.now();
     }
 

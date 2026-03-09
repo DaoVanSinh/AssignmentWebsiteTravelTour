@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import com.tourvn.entity.Payment;
 import com.tourvn.repository.PaymentRepository;
+import com.tourvn.dto.PaymentRequest;
 
 @Service
 public class PaymentService {
@@ -14,12 +15,11 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    public Payment creatPayment (long bookingId, String method){
+    public Payment createPayment (PaymentRequest request){
         Payment payment = new Payment(
-            bookingId,
-            100000.0,
-            method,
-            "pending"
+            request.getBookingId(),
+            request.getAmount(),
+            request.getPaymentMethod()
         );
         return paymentRepository.save(payment);
     }
