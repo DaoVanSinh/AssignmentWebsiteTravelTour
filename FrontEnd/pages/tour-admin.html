@@ -1,0 +1,26 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/tour-admin.css">
+</head>
+<div class="container">
+    <div id="header-placeholder"></div> <h2>Quản Lý Danh Sách Tour</h2>
+    <button class="btn-add" onclick="openAddModal()">+ Thêm Tour Mới</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Tour</th>
+                <th>Giá</th>
+                <th>Ngày Bắt Đầu</th>
+                <th>Ngày Kết Thúc</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody id="tour-data">
+            </tbody>
+    </table>
+
+    <div id="footer-placeholder"></div> </div>
+<script src="../js/tour-service.js"></script>
+<script src="../js/tour-controller.js"></script>
