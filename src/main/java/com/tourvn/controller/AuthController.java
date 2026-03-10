@@ -14,7 +14,7 @@ public class AuthController {
     public AuthController(UserService userService){
         this.userService = userService;
     }
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/register")
     public User register(@RequestBody User user){
         return userService.register(
@@ -23,12 +23,12 @@ public class AuthController {
         user.getPhone(),
         user.getPassword());
     }
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/login")
     public User login(@RequestBody Map<String, String> request){
         return userService.login(request.get("email"), request.get("password"));
     }
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/forgot-password")
     public User forgotPasssword(@RequestBody Map<String, String> request){
         return userService.forgotPassword(request.get("email"),request.get("newPassword"));
