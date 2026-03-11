@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh toán VNPay</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0f5bd3;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Thanh toán VNPay</h2>
+
+        <form id="Form">
+
+            <input type="number" id="bookingId" placeholder="Booking ID" required>
+
+            <input type="number" id="amount" placeholder="Số tiền" required>
+
+            <button type="submit">Thanh toán</button>
+
+        </form>
+
+    </div>
+
+    <script>
+
+        document.getElementById("Form").addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            let bookingId = document.getElementById("bookingId").value;
+            let amount = document.getElementById("amount").value;
+
+            fetch(`http://localhost:8080/api/payments/vnpay?bookingId=${bookingId}&amount=${amount}`)
+
+                .then(res => res.json())
+
+                .then(data => {
+
+                    console.log(data.paymentUrl);
+
+                    window.location.href = data.paymentUrl;
+
+                });
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <link rel="stylesheet" href="../css/contact.css" </head>
+
+<body>
+    <main class="main">
+
+        <div class="container">
+
+            <h1 class="title-1">LIÊN HỆ</h1>
+            <p class="text">
+                Để đáp ứng được các yêu cầu và đóng góp ý kiến của quý khách,
+                vui lòng gửi thông tin bên dưới.
+            </p>
+
+            <div class="main-contact">
+
+                <div class="contact-form">
+
+                    <h3>THÔNG TIN LIÊN LẠC</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Loại thông tin :</label>
+                            <select>
+                                <option>Du lịch</option>
+                                <option>Hỗ trợ</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Họ tên :</label>
+                            <input type="text" placeholder="Liên hệ">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email :</label>
+                            <input type="email" placeholder="Nhập email">
+                        </div>
+                    </div>
+
+                    <div class="boder">
+                        <div class="form-1">
+                            <label>Điện thoại :</label>
+                            <input type="text" placeholder="Nhập số điện thoại">
+                        </div>
+
+                        <div class="form-1">
+                            <label>Tên công ty :</label>
+                            <input type="text">
+                        </div>
+
+                        <div class="form-1">
+                            <label>Số khách :</label>
+                            <input type="number" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-2">
+                        <label>Địa chỉ :</label>
+                        <input type="text" placeholder="Nhập địa chỉ">
+                    </div>
+
+                    <div class="form-2">
+                        <label>Tiêu đề :</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="form-2">
+                        <label>Nội dung :</label>
+                        <textarea rows="5"></textarea>
+                    </div>
+
+                    <div class="capcha">
+
+                        <div class="capcha-left">
+                            <input type="checkbox" id="checkCapcha">
+                            <label for="checkCapcha">Tôi không phải là người máy</label>
+                        </div>
+
+                        <div class="capcha-right">
+                            <img src="../images/capcha.png" alt="capcha">
+                            <span>Privacy - Terms</span>
+                        </div>
+
+                    </div>
+
+                    <button class="send" onclick="send()">Gửi ngay</button>
+
+                </div>
+
+            </div>
+
+    </main>
+
+</body>
+<script>
+    function send() {
+
+        let captcha = document.getElementById("checkCapcha");
+
+        if (!captcha.checked) {
+            alert("Vui lòng xác nhận CAPTCHA");
+            return;
+        }
+
+        alert("Cảm ơn ý kiến của bạn");
+
+    }
+
+</script>
+</html>
