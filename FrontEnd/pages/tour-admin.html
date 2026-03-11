@@ -1,26 +1,79 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/tour-admin.css">
+<meta charset="UTF-8">
+<title>Quản lý Tour</title>
+
+<link rel="stylesheet" href="../css/tour-admin.css">
+
 </head>
-<div class="container">
-    <div id="header-placeholder"></div> <h2>Quản Lý Danh Sách Tour</h2>
-    <button class="btn-add" onclick="openAddModal()">+ Thêm Tour Mới</button>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên Tour</th>
-                <th>Giá</th>
-                <th>Ngày Bắt Đầu</th>
-                <th>Ngày Kết Thúc</th>
-                <th>Thao Tác</th>
-            </tr>
-        </thead>
-        <tbody id="tour-data">
-            </tbody>
-    </table>
+<body>
 
-    <div id="footer-placeholder"></div> </div>
+<h2>Quản Lý Tour</h2>
+
+<button onclick="openAddModal()">+ Thêm Tour</button>
+
+<table border="1">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Tên Tour</th>
+<th>Giá</th>
+<th>Ngày Bắt Đầu</th>
+<th>Ngày Kết Thúc</th>
+<th>Thao Tác</th>
+</tr>
+</thead>
+
+<tbody id="tour-data"></tbody>
+
+</table>
+
+<!-- Modal -->
+
+<div id="tourModal" class="modal">
+
+<div class="modal-content">
+
+<h3 id="modalTitle">Thêm Tour</h3>
+
+<div class="form-group">
+    <input id="name" placeholder="Tên tour">
+</div>
+
+<div class="form-group">
+    <input id="price" placeholder="Giá">
+</div>
+
+<div class="form-group">
+    <input id="startDate" type="date">
+</div>
+
+<div class="form-group">
+    <input id="endDate" type="date">
+</div>
+
+<div class="form-group">
+    <label for="imageUrl">Hình ảnh</label>
+    <input type="text" id="imageUrl" placeholder="Nhập link hình ảnh" oninput="previewImage()">
+</div>
+
+<img id="imagePreview" style="max-width:200px; margin-top:10px; display:none;">
+
+<div class="form-buttons">
+    <button onclick="saveTour()">Lưu</button>
+    <button onclick="closeModal()">Hủy</button>
+</div>
+
+
+</div>
+
+</div>
+
 <script src="../js/tour-service.js"></script>
 <script src="../js/tour-controller.js"></script>
+
+</body>
+</html>
