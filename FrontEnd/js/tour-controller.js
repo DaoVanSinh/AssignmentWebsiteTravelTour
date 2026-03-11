@@ -113,3 +113,12 @@ function previewImage() {
         img.style.display = "none";
     }
 }
+
+function openForm() {
+    document.getElementById("tourModal").style.display = "block";
+    document.getElementById("tourModal").scrollIntoView({ behavior: 'smooth' });
+}
+
+function closeForm() {
+    document.getElementById("tourModal").style.display = "none";
+}

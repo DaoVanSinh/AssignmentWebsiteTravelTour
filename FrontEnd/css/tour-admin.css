@@ -131,3 +131,18 @@ tbody tr:hover {
 
 .btn-edit:hover { background-color: #1f6391; }
 .btn-delete:hover { background-color: #c0392b; }
+
+.admin-footer {
+    text-align: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa; /* Màu nền xám nhạt */
+    color: #6c757d; /* Chữ màu xám */
+    font-size: 13px;
+    border-top: 1px solid #dee2e6;
+    margin-top: 20px;
+}
+
+#tourModal {
+    display: none; /* Ẩn form đi */
+}
+

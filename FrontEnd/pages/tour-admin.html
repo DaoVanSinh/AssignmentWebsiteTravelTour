@@ -12,7 +12,7 @@
 
 <h2>Quản Lý Tour</h2>
 
-<button onclick="openAddModal()">+ Thêm Tour</button>
+<button onclick="openForm()" class="btn-add">+ Thêm Tour</button>
 
 <table border="1">
 
@@ -72,8 +72,18 @@
 
 </div>
 
+<div id="footer-placeholder"></div>
+
+<script>
+    fetch('../components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+</script>
 <script src="../js/tour-service.js"></script>
 <script src="../js/tour-controller.js"></script>
+
 
 </body>
 </html>
