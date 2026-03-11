@@ -15,7 +15,8 @@ public class Tour {
     private Long id;
 
     @Column(nullable = false, length = 150)
-    private String name; 
+
+    private String name;
 
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -24,7 +25,11 @@ public class Tour {
     private Double price;
 
     @Column(name = "start_date")
-    private LocalDate startDate; 
+    private LocalDate startDate;
+
+    private String imageUrl;
+
+    private String title;
 
     @Column(name = "end_date")
     private LocalDate endDate;
@@ -32,5 +37,4 @@ public class Tour {
     @Column(name = "max_people")
     private Integer maxPeople;
 
-    private String imageUrl; 
 }

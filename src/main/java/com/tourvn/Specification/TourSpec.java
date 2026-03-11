@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 public class TourSpec {
     public static Specification<EntityTour> buildSpec(DtoSearchAndFilter dto){
         Specification<EntityTour> spec=Specification.where(null);
-        //keyword 
+        //keyword
         if(dto.getKeyword()!=null&& !dto.getKeyword().trim().isEmpty()){
             String keyword=utils.removeAccent(dto.getKeyword()).toLowerCase().trim();
             spec=spec.and((root,query,cb)->

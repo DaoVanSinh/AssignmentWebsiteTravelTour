@@ -1,5 +1,6 @@
 # Xác định yêu cầu & phân tích hệ thống cho chức năng đăng nhập đăng kí
- 1. Mục đích xác định yêu cầu
+
+1. Mục đích xác định yêu cầu
 
 Việc xác định yêu cầu hệ thống nhằm làm rõ các chức năng mà hệ thống Website Tour Du lịch Việt Nam cần đáp ứng, cũng như các yêu cầu về chất lượng và phạm vi hoạt động. Đây là cơ sở quan trọng để tiến hành thiết kế, xây dựng và triển khai hệ thống một cách hiệu quả, tránh thiếu sót hoặc phát sinh ngoài phạm vi đề tài.
 
@@ -14,8 +15,8 @@ Hệ thống Website Travel Tour có các đối tượng sử dụng chính nh�
 
   Là người quản lý hệ thống, chịu trách nhiệm quản lý tour, người dùng và các đơn đặt tour.
 
- 3. Yêu cầu chức năng
-  Yêu cầu chức năng đối với người dùng:
+3. Yêu cầu chức năng
+   Yêu cầu chức năng đối với người dùng:
 
 Hệ thống cần đáp ứng các chức năng sau cho người dùng:
 
@@ -35,8 +36,8 @@ Hệ thống cần đáp ứng các chức năng sau cho quản trị viên:
 * Quản lý các đơn đặt tour
 * Kiểm tra và cập nhật trạng thái đơn đặt tour
 
- 4. Yêu cầu phi chức năng
-Ngoài các chức năng chính, hệ thống cần đảm bảo các yêu cầu phi chức năng sau:
+4. Yêu cầu phi chức năng
+   Ngoài các chức năng chính, hệ thống cần đảm bảo các yêu cầu phi chức năng sau:
 
 * Giao diện thân thiện, dễ sử dụng
 * Thời gian phản hồi nhanh
@@ -44,8 +45,8 @@ Ngoài các chức năng chính, hệ thống cần đảm bảo các yêu cầu
 * Đảm bảo bảo mật thông tin người dùng
 * Hệ thống dễ bảo trì và mở rộng
 
- 5. Phạm vi và giới hạn hệ thống
-Trong phạm vi đề tài, hệ thống có các giới hạn sau:
+5. Phạm vi và giới hạn hệ thống
+   Trong phạm vi đề tài, hệ thống có các giới hạn sau:
 
 * Không hỗ trợ thanh toán trực tuyến
 * Không phát triển ứng dụng trên nền tảng di động
@@ -56,9 +57,9 @@ Trong phạm vi đề tài, hệ thống có các giới hạn sau:
 # Phân tích hệ thống chức năng booking
 
 * Hệ thống website tour
-du lịch được xây dựng nhằm hỗ trợ người dùng trong việc tìm kiếm, xem thông tin
-và đặt tour du lịch một cách thuận tiện. Dựa trên yêu cầu của hệ thống, các chức
-năng chính được xác định như sau:
+  du lịch được xây dựng nhằm hỗ trợ người dùng trong việc tìm kiếm, xem thông tin
+  và đặt tour du lịch một cách thuận tiện. Dựa trên yêu cầu của hệ thống, các chức
+  năng chính được xác định như sau:
 
 **1. Chức năng xem
 danh sách tour**
@@ -144,6 +145,7 @@ danh sách tour**
   và an toàn
 
 # Phân tích hệ thống chức năng hiển thị tìm kiếm lọc tour
+
 1. Yêu cầu chức năng
 
 Xem và tìm kiếm tour du lịch
@@ -188,7 +190,7 @@ Giao diện quản trị
 
 # Phân tích hệ thống cho chức năng CRUD tour
 
- 1. Tác nhân ngoài (Người dùng)
+1. Tác nhân ngoài (Người dùng)
 
 Đây là những đối tượng tương tác trực tiếp với giao diện website:
 
@@ -203,7 +205,7 @@ Giao diện quản trị
   * Gửi đánh giá/phản hồi (Review) sau khi đi tour.
   * Xem lịch sử đặt tour.
 
- 2. Tác nhân nội bộ (Quản trị)
+2. Tác nhân nội bộ (Quản trị)
 
 Đây là nhân sự của công ty du lịch vận hành hệ thống:
 
@@ -219,7 +221,7 @@ Giao diện quản trị
   * Cấu hình hệ thống, quản lý danh mục (vùng miền, loại hình du lịch).
   * Xem báo cáo doanh thu và thống kê truy cập.
 
- 3. Tác nhân hệ thống (System Actors)
+3. Tác nhân hệ thống (System Actors)
 
 Nếu hệ thống có kết nối với bên thứ ba:
 
