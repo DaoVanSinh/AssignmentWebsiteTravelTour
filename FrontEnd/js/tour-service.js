@@ -1,42 +1,33 @@
-const API = "http://localhost:8080/api/tours";
+const API_URL = "http://localhost:8080/api/tours";
+const ADMIN_API = "http://localhost:8080/api/tours/manage"; 
 
+// 1. Lấy danh sách Tour
 async function getTours() {
-
-    const res = await fetch(API);
-    return res.json();
-
+    const response = await fetch(API_URL);
+    return await response.json();
 }
 
-async function addTour(tour) {
-
-    await fetch(API + "/manage", {
-
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(tour)
-
+// 2. Thêm Tour mới
+async function addTour(tourData) {
+    await fetch(ADMIN_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(tourData)
     });
-
 }
 
-async function updateTour(id, tour) {
-
-    await fetch(API + "/manage/" + id, {
-
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(tour)
-
+// 3. Cập nhật Tour (Sửa)
+async function updateTour(id, tourData) {
+    await fetch(`${ADMIN_API}/${id}`, {
+        method: 'PUT', // Dùng PUT để cập nhật dữ liệu
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(tourData)
     });
-
 }
 
+// 4. Xóa Tour
 async function deleteTour(id) {
-
-    await fetch(API + "/manage/" + id, {
-
-        method: "DELETE"
-
+    await fetch(`${ADMIN_API}/${id}`, { 
+        method: 'DELETE' 
     });
-
 }

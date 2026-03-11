@@ -58,31 +58,30 @@ function editTour(id,name,price,start,end,image) {
 }
 
 async function saveTour() {
-
     const tour = {
-
         name: document.getElementById("name").value,
-        price: document.getElementById("price").value,
+        price: Number(document.getElementById("price").value), // Ép kiểu số để Java không báo lỗi chữ
         startDate: document.getElementById("startDate").value,
         endDate: document.getElementById("endDate").value,
-        imageUrl: document.getElementById("imageUrl").value
-
+        imageUrl: document.getElementById("imageUrl").value,
+        
+        // Bổ sung 2 trường bắt buộc để Spring Boot chấp nhận dữ liệu
+        description: "Tour du lịch hấp dẫn", 
+        maxPeople: 15
     };
 
-    if(editId){
-
-        await updateTour(editId,tour);
-
-    }else{
-
-        await addTour(tour);
-
+    try {
+        if(editId){
+            await updateTour(editId, tour);
+        }else{
+            await addTour(tour);
+        }
+        closeModal();
+        loadTours(); // Tải lại bảng ngay lập tức
+    } catch (error) {
+        console.error("Lỗi khi lưu tour:", error);
+        alert("Lỗi! Bạn hãy nhấn Option + Command + I, mở tab Console để xem chi tiết.");
     }
-
-    closeModal();
-
-    loadTours();
-
 }
 
 async function removeTour(id){
