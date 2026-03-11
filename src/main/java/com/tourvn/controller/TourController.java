@@ -5,11 +5,12 @@ import com.tourvn.repository.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/tours/manage")
+
+@CrossOrigin("*")
 public class TourController {
 
     @Autowired
@@ -30,9 +31,12 @@ public class TourController {
         Tour tour = tourRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy Tour với id: " + id));
 
-        tour.setTitle(tourDetails.getTitle());
+        tour.setName(tourDetails.getName()); 
         tour.setDescription(tourDetails.getDescription());
         tour.setPrice(tourDetails.getPrice());
+        tour.setStartDate(tourDetails.getStartDate());
+        tour.setEndDate(tourDetails.getEndDate());
+        tour.setMaxPeople(tourDetails.getMaxPeople());
         tour.setImageUrl(tourDetails.getImageUrl());
 
         Tour updatedTour = tourRepository.save(tour);

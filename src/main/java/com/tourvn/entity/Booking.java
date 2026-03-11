@@ -27,6 +27,9 @@ public class Booking {
     @Column(name = "booking_date")
     private LocalDateTime bookingDate;
 
+    @Column(name = "special_request")
+    private String specialRequest;
+
     @Enumerated(EnumType.STRING) //trạng thái booking lưu dưới dạng text
     private BookingStatus status;
 
@@ -94,5 +97,13 @@ public class Booking {
     
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+    
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 }

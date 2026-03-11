@@ -8,7 +8,9 @@ customerName: document.getElementById("customerName").value,
 email: document.getElementById("email").value,
 phone: document.getElementById("phone").value,
 tourId: parseInt(document.getElementById("tourId").value),
-numberOfPeople: parseInt(document.getElementById("quantity").value)
+numberOfPeople: parseInt(document.getElementById("quantity").value),
+specialRequest: document.getElementById("specialRequest").value
+
 
 };
 

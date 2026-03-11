@@ -25,7 +25,8 @@ public class BookingRequest {
     @Min(value = 1, message = "Số người phải ít nhất 1")
     @Max(value = 50, message = "Số người tối đa 50")
         private int numberOfPeople;
-
+        
+        private String specialRequest;
     
     public String getCustomerName() {
         return customerName;
@@ -65,5 +66,13 @@ public class BookingRequest {
     
     public void setNumberOfPeople(int numberOfPeople) {
         this.numberOfPeople = numberOfPeople;
+    }
+
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 }
