@@ -1,124 +1,113 @@
 let editId = null;
+let toursList = []; // Mảng lưu trữ dữ liệu để lấy lại khi bấm Sửa
 
+// Tự động chạy loadTours() khi mở web
 document.addEventListener("DOMContentLoaded", loadTours);
 
 async function loadTours() {
+    try {
+        toursList = await getTours();
+        const tbody = document.getElementById("tourTableBody");
+        tbody.innerHTML = "";
 
-    const tours = await getTours();
+        toursList.forEach(t => {
+            const tr = document.createElement("tr");
+            
+            // Format tiền tệ cho đẹp mắt
+            const adultP = t.adultPrice ? t.adultPrice.toLocaleString('vi-VN') : 0;
+            const childP = t.childPrice ? t.childPrice.toLocaleString('vi-VN') : 0;
 
-    const table = document.getElementById("tour-data");
-
-    table.innerHTML = "";
-
-    tours.forEach(t => {
-
-        table.innerHTML += `
-        <tr>
-        <td>${t.id}</td>
-        <td>${t.name}</td>
-        <td>${t.price}</td>
-        <td>${t.startDate}</td>
-        <td>${t.endDate}</td>
-
-        <td>
-        <button onclick="editTour(${t.id},'${t.name}',${t.price},'${t.startDate}','${t.endDate}','${t.imageUrl}')">Sửa</button>
-        <button onclick="removeTour(${t.id})">Xóa</button>
-        </td>
-
-        </tr>
-        `;
-    });
-
+            tr.innerHTML = `
+                <td>${t.id}</td>
+                <td>${t.title}</td>
+                <td>${t.duration}</td>
+                <td>${t.departure}</td>
+                <td>${adultP} đ</td>
+                <td>${childP} đ</td>
+                <td>
+                    <button class="btn-edit" onclick="editTour(${t.id})">Sửa</button>
+                    <button class="btn-delete" onclick="removeTour(${t.id})">Xóa</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch (error) {
+        console.error("Lỗi khi tải danh sách:", error);
+    }
 }
 
-function openAddModal() {
-
-    editId = null;
-
-    document.getElementById("modalTitle").innerText = "Thêm Tour";
-
-    document.getElementById("tourModal").style.display = "block";
-
+function openModal() {
+    editId = null; // Chế độ Thêm mới
+    document.getElementById("modalTitle").innerText = "Thêm Tour Mới";
+    
+    // Xóa trắng form
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("duration").value = "";
+    document.getElementById("departure").value = "";
+    document.getElementById("adultPrice").value = "";
+    document.getElementById("childPrice").value = "";
+    document.getElementById("imageUrl").value = "";
+    
+    document.getElementById("tourModal").style.display = "flex";
 }
 
-function editTour(id,name,price,start,end,image) {
+function closeModal() {
+    document.getElementById("tourModal").style.display = "none";
+}
 
-    editId = id;
+function editTour(id) {
+    // Tìm tour trong mảng đã lưu
+    const tour = toursList.find(t => t.id === id);
+    if (!tour) return;
 
+    editId = tour.id; // Chế độ Cập nhật
     document.getElementById("modalTitle").innerText = "Sửa Tour";
+    
+    // Đổ dữ liệu cũ vào Form
+    document.getElementById("title").value = tour.title;
+    document.getElementById("description").value = tour.description;
+    document.getElementById("duration").value = tour.duration;
+    document.getElementById("departure").value = tour.departure;
+    document.getElementById("adultPrice").value = tour.adultPrice;
+    document.getElementById("childPrice").value = tour.childPrice;
+    document.getElementById("imageUrl").value = tour.imageUrl;
 
-    document.getElementById("name").value = name;
-    document.getElementById("price").value = price;
-    document.getElementById("startDate").value = start;
-    document.getElementById("endDate").value = end;
-    document.getElementById("imageUrl").value = image;
-
-    document.getElementById("tourModal").style.display = "block";
-
+    document.getElementById("tourModal").style.display = "flex";
 }
 
 async function saveTour() {
-    const tour = {
-        name: document.getElementById("name").value,
-        price: Number(document.getElementById("price").value), // Ép kiểu số để Java không báo lỗi chữ
-        startDate: document.getElementById("startDate").value,
-        endDate: document.getElementById("endDate").value,
-        imageUrl: document.getElementById("imageUrl").value,
-        
-        // Bổ sung 2 trường bắt buộc để Spring Boot chấp nhận dữ liệu
-        description: "Tour du lịch hấp dẫn", 
-        maxPeople: 15
+    const tourData = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        duration: document.getElementById("duration").value,
+        departure: document.getElementById("departure").value,
+        adultPrice: Number(document.getElementById("adultPrice").value),
+        childPrice: Number(document.getElementById("childPrice").value),
+        imageUrl: document.getElementById("imageUrl").value
     };
 
     try {
-        if(editId){
-            await updateTour(editId, tour);
-        }else{
-            await addTour(tour);
+        if (editId) {
+            await updateTour(editId, tourData);
+        } else {
+            await addTour(tourData);
         }
         closeModal();
         loadTours(); // Tải lại bảng ngay lập tức
     } catch (error) {
         console.error("Lỗi khi lưu tour:", error);
-        alert("Lỗi! Bạn hãy nhấn Option + Command + I, mở tab Console để xem chi tiết.");
+        alert("Có lỗi xảy ra, hãy kiểm tra Console.");
     }
 }
 
-async function removeTour(id){
-
-    if(confirm("Xóa tour?")){
-
-        await deleteTour(id);
-
-        loadTours();
-
+async function removeTour(id) {
+    if (confirm("Bạn có chắc chắn muốn xóa Tour này?")) {
+        try {
+            await deleteTour(id);
+            loadTours();
+        } catch (error) {
+            console.error("Lỗi khi xóa tour:", error);
+        }
     }
-
-}
-
-function closeModal(){
-
-    document.getElementById("tourModal").style.display = "none";
-
-}
-
-function previewImage() {
-    const url = document.getElementById("imageUrl").value;
-    const img = document.getElementById("imagePreview");
-
-    if (url) {
-        img.src = url;
-        img.style.display = "block";
-    } else {
-        img.style.display = "none";
-    }
-}
-
-function openForm() {
-    document.getElementById("tourModal").style.display = "block";
-    document.getElementById("tourModal").scrollIntoView({ behavior: 'smooth' });
-}
-
-function closeForm() {
-    document.getElementById("tourModal").style.display = "none";
 }

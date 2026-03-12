@@ -1,89 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Quản lý Tour</title>
-
-<link rel="stylesheet" href="../css/tour-admin.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tour</title>
+    <link rel="stylesheet" href="../css/tour-admin.css">
 </head>
-
 <body>
+    <div class="container">
+        <h2>Quản lý Tour</h2>
+        <button class="btn-add" onclick="openModal()">+ Thêm Tour</button>
 
-<h2>Quản Lý Tour</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Tour</th>
+                    <th>Thời gian</th>
+                    <th>Nơi khởi hành</th>
+                    <th>Giá Người Lớn</th>
+                    <th>Giá Trẻ Em</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tourTableBody">
+                </tbody>
+        </table>
+    </div>
 
-<button onclick="openForm()" class="btn-add">+ Thêm Tour</button>
+    <div id="tourModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Thông tin Tour</h3>
+            
+            <label>Tên tour:</label>
+            <input type="text" id="title" placeholder="VD: Tour Hạ Long - Cát Bà">
 
-<table border="1">
+            <label>Mô tả chi tiết:</label>
+            <textarea id="description" rows="3" placeholder="Nhập mô tả tour..."></textarea>
 
-<thead>
-<tr>
-<th>ID</th>
-<th>Tên Tour</th>
-<th>Giá</th>
-<th>Ngày Bắt Đầu</th>
-<th>Ngày Kết Thúc</th>
-<th>Thao Tác</th>
-</tr>
-</thead>
+            <label>Thời gian:</label>
+            <input type="text" id="duration" placeholder="VD: 3 ngày 2 đêm">
 
-<tbody id="tour-data"></tbody>
+            <label>Nơi khởi hành:</label>
+            <input type="text" id="departure" placeholder="VD: Hà Nội">
 
-</table>
+            <label>Giá người lớn (VNĐ):</label>
+            <input type="number" id="adultPrice" placeholder="VD: 3500000">
 
-<!-- Modal -->
+            <label>Giá trẻ em (VNĐ):</label>
+            <input type="number" id="childPrice" placeholder="VD: 1500000">
 
-<div id="tourModal" class="modal">
+            <label>Link hình ảnh:</label>
+            <input type="text" id="imageUrl" placeholder="Nhập link ảnh (.jpg, .png)">
 
-<div class="modal-content">
+            <div class="modal-actions">
+                <button class="btn-save" onclick="saveTour()">Lưu</button>
+                <button class="btn-cancel" onclick="closeModal()">Hủy</button>
+            </div>
+        </div>
+    </div>
 
-<h3 id="modalTitle">Thêm Tour</h3>
+    <div class="container" style="box-shadow: none; background: transparent; padding-bottom: 0;">
+        <footer class="custom-footer">
+            
 
-<div class="form-group">
-    <input id="name" placeholder="Tên tour">
-</div>
+            <div class="footer-links-row">
+                <div class="nav-links">
+                    <a href="#">Trang Chủ</a>
+                    <a href="#">Tin Tức</a>
+                    <a href="#">Tour Du Lịch</a>
+                    <a href="#">Dịch Vụ</a>
+                    <a href="#">Về Chúng Tôi</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#">f</a> 
+                    <a href="#">🐦</a> 
+                    <a href="#">📷</a> 
+                    <a href="#">▶</a>
+                </div>
+            </div>
 
-<div class="form-group">
-    <input id="price" placeholder="Giá">
-</div>
+            <hr class="footer-divider">
 
-<div class="form-group">
-    <input id="startDate" type="date">
-</div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; N8. Welcome.
+                </div>
+                
+                <div class="footer-text-center" style="color: #c92027; font-weight: bold; font-size: 16px; letter-spacing: 1px;">
+                    VIETNAM
+                </div>
 
-<div class="form-group">
-    <input id="endDate" type="date">
-</div>
+                <div class="policy-links">
+                    <a href="#">Điều khoản dịch vụ</a>
+                    <a href="#">Chính sách bảo mật</a>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-<div class="form-group">
-    <label for="imageUrl">Hình ảnh</label>
-    <input type="text" id="imageUrl" placeholder="Nhập link hình ảnh" oninput="previewImage()">
-</div>
-
-<img id="imagePreview" style="max-width:200px; margin-top:10px; display:none;">
-
-<div class="form-buttons">
-    <button onclick="saveTour()">Lưu</button>
-    <button onclick="closeModal()">Hủy</button>
-</div>
-
-
-</div>
-
-</div>
-
-<div id="footer-placeholder"></div>
-
-<script>
-    fetch('../components/footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        });
-</script>
-<script src="../js/tour-service.js"></script>
-<script src="../js/tour-controller.js"></script>
-
-
+    <script src="../js/tour-service.js"></script>
+    <script src="../js/tour-controller.js"></script>
 </body>
 </html>
