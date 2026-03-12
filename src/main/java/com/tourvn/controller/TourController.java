@@ -2,35 +2,41 @@ package com.tourvn.controller;
 
 import com.tourvn.entity.Tour;
 import com.tourvn.repository.TourRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tours/manage")
-@CrossOrigin("*")
+@RequestMapping("/api/tours")
+@CrossOrigin(origins = "*")
 public class TourController {
 
     @Autowired
     private TourRepository tourRepository;
 
+    // API lấy danh sách tour
     @GetMapping
     public List<Tour> getAllTours() {
         return tourRepository.findAll();
     }
 
-    @PostMapping
+    // Admin: thêm tour
+    @PostMapping("/manage")
     public Tour createTour(@RequestBody Tour tour) {
         return tourRepository.save(tour);
     }
 
-    @PutMapping("/{id}")
+    // Admin: cập nhật tour
+    @PutMapping("/manage/{id}")
     public ResponseEntity<Tour> updateTour(@PathVariable Long id, @RequestBody Tour tourDetails) {
+
         Tour tour = tourRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy Tour với id: " + id));
 
-        tour.setName(tourDetails.getName()); 
+        tour.setName(tourDetails.getName());
         tour.setDescription(tourDetails.getDescription());
         tour.setPrice(tourDetails.getPrice());
         tour.setStartDate(tourDetails.getStartDate());
@@ -39,15 +45,19 @@ public class TourController {
         tour.setImageUrl(tourDetails.getImageUrl());
 
         Tour updatedTour = tourRepository.save(tour);
+
         return ResponseEntity.ok(updatedTour);
     }
 
-    @DeleteMapping("/{id}")
+    // Admin: xóa tour
+    @DeleteMapping("/manage/{id}")
     public ResponseEntity<?> deleteTour(@PathVariable Long id) {
+
         Tour tour = tourRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy Tour với id: " + id));
 
         tourRepository.delete(tour);
+
         return ResponseEntity.ok("Đã xóa Tour thành công!");
     }
 }
