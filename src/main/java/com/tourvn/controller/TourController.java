@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tours")
+@RequestMapping("/api/admin/tours")
 @CrossOrigin(origins = "*")
 public class TourController {
 
@@ -23,14 +23,23 @@ public class TourController {
         return tourRepository.findAll();
     }
 
+    @GetMapping("/api/admin/tours/{id}")
+    public ResponseEntity<Tour> getTourById(@PathVariable Long id) {
+
+    Tour tour = tourRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Không tìm thấy tour"));
+
+    return ResponseEntity.ok(tour);
+}
+
     // Admin: thêm tour
-    @PostMapping("/manage")
+    @PostMapping("/api/admin/tours")
     public Tour createTour(@RequestBody Tour tour) {
         return tourRepository.save(tour);
     }
 
     // Admin: cập nhật tour
-    @PutMapping("/manage/{id}")
+    @PutMapping("/admin/{id}")
     public ResponseEntity<Tour> updateTour(@PathVariable Long id, @RequestBody Tour tourDetails) {
 
         Tour tour = tourRepository.findById(id)
@@ -50,7 +59,7 @@ public class TourController {
     }
 
     // Admin: xóa tour
-    @DeleteMapping("/manage/{id}")
+    @DeleteMapping("/admin/{id}")
     public ResponseEntity<?> deleteTour(@PathVariable Long id) {
 
         Tour tour = tourRepository.findById(id)
