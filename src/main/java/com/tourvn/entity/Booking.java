@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 @Table(name = "bookings")
 public class Booking {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // khóa chính
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //
     private Long id;
 
     @Column(name = "customer_name", nullable = false)
@@ -27,7 +27,10 @@ public class Booking {
     @Column(name = "booking_date")
     private LocalDateTime bookingDate;
 
-    @Enumerated(EnumType.STRING)
+    @Column(name = "special_request")
+    private String specialRequest;
+
+    @Enumerated(EnumType.STRING) //trạng thái booking lưu dưới dạng text
     private BookingStatus status;
 
     // ===== GETTER & SETTER =====
@@ -80,7 +83,7 @@ public class Booking {
         this.bookingDate = bookingDate;
     }
 
-    public BookingStatus getStatus() {
+    public BookingStatus getStatus() { 
         return status;
     }
 
@@ -94,5 +97,13 @@ public class Booking {
     
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+    
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 }

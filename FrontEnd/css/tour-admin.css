@@ -1,0 +1,143 @@
+body{
+font-family:'Times New Roman';
+background:#f5f7fb;
+margin:0;
+}
+
+/* container giống booking */
+
+.container{
+width:1200px;
+margin:auto;
+padding:40px;
+}
+
+/* khung admin */
+
+.admin-box{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* tiêu đề */
+
+h2{
+margin-bottom:20px;
+color:#3b5ccc;
+}
+
+/* nút thêm */
+
+.btn-add{
+background:#3b5ccc;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+.btn-add:hover{
+background:#2742a5;
+}
+
+/* bảng */
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#3b5ccc;
+color:white;
+padding:12px;
+}
+
+td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+tr:hover{
+background:#f2f6ff;
+}
+
+/* nút */
+
+.btn-edit{
+background:#3498db;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.btn-delete{
+background:#e74c3c;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* modal */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+}
+
+.modal-content{
+background:white;
+width:400px;
+margin:10% auto;
+padding:20px;
+border-radius:8px;
+}
+
+/* form */
+
+.form-group{
+margin-bottom:10px;
+}
+
+.form-group input{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.form-buttons{
+margin-top:15px;
+}
+
+.form-buttons button{
+padding:8px 16px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.form-buttons button:first-child{
+background:#3b5ccc;
+color:white;
+}
+
+.form-buttons button:last-child{
+background:#e74c3c;
+color:white;
+margin-left:10px;
+}

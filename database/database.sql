@@ -22,12 +22,14 @@ CREATE TABLE users (
 -- TABLE: tours
 CREATE TABLE tours (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL,
+    title VARCHAR(150) NOT NULL,
     description TEXT,
-    price DECIMAL(10,2) NOT NULL,
+    duration VARCHAR(100),
+    departure VARCHAR(150),
     start_date DATE,
-    end_date DATE,
-    max_people INT,
+    adult_price DECIMAL(10,2) NOT NULL,
+    child_price DECIMAL(10,2),
+    image_url VARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
