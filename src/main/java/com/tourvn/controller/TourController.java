@@ -10,13 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD
 @RequestMapping("/api/tours/manage")
 @CrossOrigin("*")
-=======
-@RequestMapping("/api/admin/tours")
-@CrossOrigin(origins = "*")
->>>>>>> 52da2d7cfb8be553b21e8991238c72ecac7ce087
 public class TourController {
 
     @Autowired
