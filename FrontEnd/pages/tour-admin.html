@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Quản lý Tour</title>
-
-<link rel="stylesheet" href="../css/tour-admin.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tour</title>
+    <link rel="stylesheet" href="../css/tour-admin.css">
 </head>
-
 <body>
+    <div class="container">
+        <h2>Quản lý Tour</h2>
+        <button class="btn-add" onclick="openModal()">+ Thêm Tour</button>
 
 <div class="container">
 
@@ -19,31 +20,63 @@
 <button class="btn-add" onclick="openAddModal()">+ Thêm Tour</button>
 
 <table>
+=======
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Tour</th>
+                    <th>Thời gian</th>
+                    <th>Nơi khởi hành</th>
+                    <th>Giá Người Lớn</th>
+                    <th>Giá Trẻ Em</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tourTableBody">
+                </tbody>
+        </table>
+    </div>
 
-<thead>
-<tr>
-<th>ID</th>
-<th>Tên Tour</th>
-<th>Giá</th>
-<th>Ngày Bắt Đầu</th>
-<th>Ngày Kết Thúc</th>
-<th>Thao Tác</th>
-</tr>
-</thead>
+    <div id="tourModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Thông tin Tour</h3>
+            
+            <label>Tên tour:</label>
+            <input type="text" id="title" placeholder="VD: Tour Hạ Long - Cát Bà">
 
-<tbody id="tour-data"></tbody>
+            <label>Mô tả chi tiết:</label>
+            <textarea id="description" rows="3" placeholder="Nhập mô tả tour..."></textarea>
 
-</table>
+            <label>Thời gian:</label>
+            <input type="text" id="duration" placeholder="VD: 3 ngày 2 đêm">
+
+            <label>Nơi khởi hành:</label>
+            <input type="text" id="departure" placeholder="VD: Hà Nội">
+
+            <label>Giá người lớn (VNĐ):</label>
+            <input type="number" id="adultPrice" placeholder="VD: 3500000">
 
 </div>
 
 </div>
 
-<div id="tourModal" class="modal">
+            <label>Giá trẻ em (VNĐ):</label>
+            <input type="number" id="childPrice" placeholder="VD: 1500000">
 
-<div class="modal-content">
+            <label>Link hình ảnh:</label>
+            <input type="text" id="imageUrl" placeholder="Nhập link ảnh (.jpg, .png)">
 
-<h3 id="modalTitle">Thêm Tour</h3>
+            <div class="modal-actions">
+                <button class="btn-save" onclick="saveTour()">Lưu</button>
+                <button class="btn-cancel" onclick="closeModal()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="box-shadow: none; background: transparent; padding-bottom: 0;">
+        <footer class="custom-footer">
+            
 
 <div class="form-group">
 <input id="name" placeholder="Tên tour">
@@ -72,14 +105,9 @@
 <button onclick="saveTour()">Lưu</button>
 <button onclick="closeModal()">Hủy</button>
 </div>
-
 </div>
-
 </div>
-
 <script src="../js/tourservice.js"></script>
 <script src="../js/tour-controller.js"></script>
-
-
 </body>
 </html>
