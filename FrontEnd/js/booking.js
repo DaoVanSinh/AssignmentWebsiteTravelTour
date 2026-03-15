@@ -1,56 +1,84 @@
-document.getElementById("bookingForm").addEventListener("submit", async function(e){
+document.addEventListener("DOMContentLoaded", function () {
 
-// Lấy id tour từ URL
-const urlParams = new URLSearchParams(window.location.search);
-const tourId = urlParams.get("id");
+loadTour();
 
-if(tourId){
+const bookingForm = document.getElementById("bookingForm");
 
-fetch("http://localhost:8080/api/tours/" + tourId)
-.then(response => response.json())
-.then(data => {
-
-document.getElementById("tourCode").innerText = data.id;
-document.getElementById("duration").innerText = data.duration;
-document.getElementById("date").innerText = data.startDate;
-document.getElementById("location").innerText = data.departure;
-
-document.getElementById("price").innerText =
-new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VND";
-
-document.getElementById("adultPrice").innerText =
-new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VND";
-
-document.getElementById("childPrice").innerText =
-new Intl.NumberFormat('vi-VN').format(data.childPrice) + " VND";
-
-document.getElementById("tourImage").src = "../images/" + data.imageUrl;
-
-document.querySelector("h2").innerText = data.title;
-
-// gán tourId vào form booking
-document.getElementById("tourId").value = data.id;
-
-})
-.catch(error => console.error("Lỗi load tour:", error));
-
-}
+bookingForm.addEventListener("submit", async function(e){
 
 e.preventDefault();
 
+document.getElementById("nameError").innerText = "";
+document.getElementById("phoneError").innerText = "";
+document.getElementById("adultError").innerText = "";
+document.getElementById("message").innerText = "";
+
+const name = document.getElementById("customerName").value.trim();
+const phone = document.getElementById("phone").value.trim();
+const email = document.getElementById("email").value.trim();
+
+const adultQuantity = parseInt(document.getElementById("adultQuantity").value);
+const childQuantity = parseInt(document.getElementById("childQuantity").value);
+
+let hasError = false;
+
+if(name === ""){
+document.getElementById("nameError").innerText =
+"Vui lòng nhập họ và tên";
+hasError = true;
+}
+
+const phoneRegex = /^0\d{9}$/;
+
+if(!phoneRegex.test(phone)){
+document.getElementById("phoneError").innerText =
+"Vui lòng kiểm tra lại số điện thoại";
+hasError = true;
+}
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!emailRegex.test(email)){
+document.getElementById("message").innerText =
+"Email không đúng định dạng";
+hasError = true;
+}
+
+if(adultQuantity < 1){
+document.getElementById("adultError").innerText =
+"Vui lòng nhập ít nhất 1 người lớn";
+hasError = true;
+}
+
+if(hasError){
+return;
+}
+
+
+const totalPeople = adultQuantity + childQuantity;
+
+
 const bookingData = {
 
-customerName: document.getElementById("customerName").value,
-email: document.getElementById("email").value,
-phone: document.getElementById("phone").value,
-tourId: parseInt(document.getElementById("tourId").value),
-numberOfPeople: parseInt(document.getElementById("quantity").value),
-specialRequest: document.getElementById("specialRequest").value
+customerName: name,
+email: email,
+phone: phone,
 
+tourId: parseInt(document.getElementById("tourId").value),
+
+numberOfPeople: totalPeople,
+
+adultQuantity: adultQuantity,
+childQuantity: childQuantity,
+
+specialRequest: document.getElementById("specialRequest").value,
+
+departureDate: document.getElementById("departureDate").value
 
 };
 
 console.log("Data gửi đi:", bookingData);
+
 
 try{
 
@@ -66,22 +94,77 @@ body: JSON.stringify(bookingData)
 
 });
 
+
 if(!response.ok){
 throw new Error("API lỗi");
 }
+
 
 const result = await response.json();
 
 console.log("Booking created:", result);
 
-document.getElementById("message").innerText="Đặt tour thành công!";
+window.location.href =
+"../pages/payment.html?bookingId=" + result.id;
 
-}catch(error){
+}
+catch(error){
 
 console.error("Lỗi:",error);
 
-document.getElementById("message").innerText="Lỗi khi gọi API";
+document.getElementById("message").innerText =
+"Lỗi khi gọi API";
 
 }
 
 });
+
+});
+
+function loadTour(){
+
+const today = new Date();
+today.setDate(today.getDate() + 1);
+
+const minDate = today.toISOString().split("T")[0];
+document.getElementById("departureDate").min = minDate;
+
+const urlParams = new URLSearchParams(window.location.search);
+const tourId = urlParams.get("id");
+
+if(!tourId) return;
+
+fetch("http://localhost:8080/api/admin/tours/" + tourId)
+
+.then(response => response.json())
+
+.then(data => {
+
+// hiển thị thông tin tour
+document.getElementById("tourCode").innerText = data.id;
+document.getElementById("duration").innerText = data.duration;
+document.getElementById("location").innerText = data.departure;
+
+
+// giá tour
+document.getElementById("price").innerText =
+new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VND";
+
+document.getElementById("adultPrice").innerText =
+new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VND";
+
+document.getElementById("childPrice").innerText =
+new Intl.NumberFormat('vi-VN').format(data.childPrice) + " VND";
+
+
+document.getElementById("tourImage").src = data.imageUrl;
+
+document.querySelector("h2").innerText = data.title;
+
+document.getElementById("tourId").value = data.id;
+
+})
+
+.catch(error => console.error("Lỗi load tour:", error));
+
+}

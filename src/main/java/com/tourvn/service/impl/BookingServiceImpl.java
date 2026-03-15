@@ -40,6 +40,9 @@ public class BookingServiceImpl implements BookingService {
         booking.setTourId(request.getTourId());
         booking.setNumberOfPeople(request.getNumberOfPeople());
         booking.setSpecialRequest(request.getSpecialRequest());
+        booking.setDepartureDate(request.getDepartureDate());
+        booking.setAdultQuantity(request.getAdultQuantity());
+        booking.setChildQuantity(request.getChildQuantity());
 
         booking.setStatus(BookingStatus.CREATED);
         booking.setBookingDate(LocalDateTime.now());

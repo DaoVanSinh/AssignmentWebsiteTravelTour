@@ -11,9 +11,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name", nullable = false)
+    @Column(name="full_name", nullable = false)
     private String fullName;
-
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -27,12 +26,10 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-    @Column(name = "created_at", updatable = false)
+    @Column(name="created_at")
     private LocalDateTime createdAt;
 
-    public User(){
-
-    }
+    public User(){}
 
     public Long getId() {
         return id;
@@ -82,5 +79,4 @@ public class User {
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
-
 }

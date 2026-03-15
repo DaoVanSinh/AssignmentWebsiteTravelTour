@@ -15,8 +15,8 @@ public class PaymentRequest {
     public Double getAmount() {
         return amount;
     }
-    public void setAmount(Double amuont) {
-        this.amount = amuont;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
     public String getPaymentMethod() {
         return paymentMethod;

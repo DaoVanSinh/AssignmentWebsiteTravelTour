@@ -13,8 +13,6 @@ public class Tour {
 
     @Column(nullable = false, length = 150)
 
-    private String name;
-
     private String title;
 
     @Column(columnDefinition = "TEXT")
@@ -24,8 +22,6 @@ public class Tour {
 
     private String departure;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
 
     @Column(name = "adult_price")
     private Double adultPrice;
@@ -76,14 +72,6 @@ public class Tour {
 
     public void setDeparture(String departure) {
         this.departure = departure;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
     }
 
     public Double getAdultPrice() {

@@ -1,7 +1,10 @@
 package com.tourvn.controller;
 
 import com.tourvn.entity.Tour;
+import com.tourvn.repository.RepositoryTour;
 import com.tourvn.repository.TourRepository;
+import com.tourvn.entity.EntityTour;
+import com.tourvn.repository.RepositoryTour;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,9 @@ import java.util.List;
 @RequestMapping("/api/admin/tours") 
 @CrossOrigin(origins = "*")
 public class TourController {
+
+    @Autowired
+    private RepositoryTour repositoryTour;
 
     @Autowired
     private TourRepository tourRepository;
@@ -34,8 +40,20 @@ public class TourController {
     // Admin: thêm tour
     @PostMapping
     public Tour createTour(@RequestBody Tour tour) {
-        return tourRepository.save(tour);
-    }
+
+    Tour savedTour = tourRepository.save(tour);
+
+    EntityTour et = new EntityTour();
+    et.setNameTour(savedTour.getTitle());
+    et.setPrice(savedTour.getAdultPrice());
+    et.setDescription(savedTour.getDescription());
+    et.setDestination(savedTour.getDeparture());
+    et.setDurationDays(3); // tạm thời
+
+    repositoryTour.save(et);
+
+    return savedTour;
+}
 
     // Admin: cập nhật tour
 
@@ -49,7 +67,6 @@ public class TourController {
         tour.setDescription(tourDetails.getDescription());
         tour.setDuration(tourDetails.getDuration());
         tour.setDeparture(tourDetails.getDeparture());
-        tour.setStartDate(tourDetails.getStartDate());
         tour.setAdultPrice(tourDetails.getAdultPrice());
         tour.setChildPrice(tourDetails.getChildPrice());
         tour.setImageUrl(tourDetails.getImageUrl());
