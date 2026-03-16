@@ -33,4 +33,9 @@ public class AuthController {
     public User forgotPasssword(@RequestBody Map<String, String> request){
         return userService.forgotPassword(request.get("email"),request.get("newPassword"));
     }
+    @CrossOrigin(origins = "*")
+    @PostMapping("/checkEmail")
+    public boolean checkEmail(@RequestBody Map<String,String> request){
+        return userService.checkEmail(request.get("email"));
+    }
 }
