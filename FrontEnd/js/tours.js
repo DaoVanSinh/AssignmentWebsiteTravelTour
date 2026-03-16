@@ -1,5 +1,12 @@
 const API_URL = "http://localhost:8080/api/admin/tours";
 
+const params = new URLSearchParams(window.location.search);
+const payment = params.get("payment");
+
+if(payment === "success"){
+alert("Thanh toán thành công!");
+}
+
 document.addEventListener("DOMContentLoaded", loadTours);
 
 async function loadTours() {

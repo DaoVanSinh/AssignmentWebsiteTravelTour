@@ -10,15 +10,15 @@ fetch(`http://localhost:8080/api/bookings/${bookingId}`)
 document.getElementById("customerName").innerText = data.customerName;
 document.getElementById("phone").innerText = data.phone;
 document.getElementById("email").innerText = data.email;
+
 document.getElementById("adultQuantity").innerText = data.adultQuantity;
 document.getElementById("childQuantity").innerText = data.childQuantity;
+
 document.getElementById("quantity").innerText =
 data.adultQuantity + data.childQuantity;
 
-document.getElementById("quantity").innerText =data.adultQuantity + data.childQuantity;
 document.getElementById("date").innerText = data.departureDate;
 document.getElementById("specialRequest").innerText = data.specialRequest;
-
 
 const tourRes = await fetch(`http://localhost:8080/api/admin/tours/${data.tourId}`);
 const tour = await tourRes.json();
@@ -30,60 +30,38 @@ document.getElementById("location").innerText = tour.departure;
 document.getElementById("price").innerText =
 new Intl.NumberFormat('vi-VN').format(tour.adultPrice) + " VND";
 
-
-amount =(data.adultQuantity * tour.adultPrice) +(data.childQuantity * tour.childPrice);
+amount =
+(data.adultQuantity * tour.adultPrice) +
+(data.childQuantity * tour.childPrice);
 
 document.getElementById("totalPrice").innerText =
 new Intl.NumberFormat('vi-VN').format(amount) + " VND";
 
 });
-document.getElementById("buy").addEventListener("click", async function(){
 
-const paymentData = {
+document.getElementById("buy").addEventListener("click", async function () {
 
-bookingId: parseInt(bookingId),
-amount: amount,
-paymentMethod: "CASH",
-paymentStatus: "PAID"
+try {
 
-};
+const response = await fetch(
+`http://localhost:8080/api/payments/vnpay?bookingId=${bookingId}&amount=${amount}`
+);
 
-console.log("Payment gửi đi:", paymentData);
-
-try{
-
-const response = await fetch("http://localhost:8080/api/payments",{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body: JSON.stringify(paymentData)
-
-});
-
-if(!response.ok){
-throw new Error("Payment API lỗi");
+if (!response.ok) {
+throw new Error("VNPay API lỗi");
 }
 
-const result = await response.json();
+const data = await response.json();
 
-console.log("Payment thành công:", result);
+console.log("VNPay URL:", data.paymentUrl);
 
-alert("Thanh toán thành công!");
-
-window.location.href = "../pages/home.html";
+window.location.href = data.paymentUrl;
 
 }
 catch(error){
 
-console.error("Lỗi payment:", error);
-
-alert("Thanh toán thất bại");
-
-window.location.href = "payment.html?bookingId=" + bookingId;
+console.error("Lỗi VNPay:", error);
+alert("Không thể kết nối VNPay");
 
 }
 
