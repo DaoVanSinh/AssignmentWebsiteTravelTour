@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Chủ - Travel</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/home-page.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+
+    <div id="content-placeholder"></div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+      function loadComponent(id, path) {
+        fetch(path)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(id).innerHTML = data;
+          });
+      }
+
+      loadComponent("header-placeholder", "../components/header.html");
+      loadComponent("content-placeholder", "../components/home-page.html");
+      loadComponent("footer-placeholder", "../components/footer.html");
+    </script>
+  </body>
+</html>
