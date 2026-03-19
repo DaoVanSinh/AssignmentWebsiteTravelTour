@@ -117,3 +117,9 @@ color:red;
 font-size:13px;
 margin-top:4px;
 }
+.tour-description {
+    margin: 10px 5px;
+    color: #444;
+    line-height: 1.6;
+    font-size: 15px;
+}

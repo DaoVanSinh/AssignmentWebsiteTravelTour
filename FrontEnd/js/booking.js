@@ -144,17 +144,18 @@ fetch("http://localhost:8080/api/admin/tours/" + tourId)
 document.getElementById("tourCode").innerText = data.id;
 document.getElementById("duration").innerText = data.duration;
 document.getElementById("location").innerText = data.departure;
+document.getElementById("tourDescription").innerText = data.description;
 
 
 // giá tour
 document.getElementById("price").innerText =
-new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VND";
+new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VNĐ";
 
 document.getElementById("adultPrice").innerText =
-new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VND";
+new Intl.NumberFormat('vi-VN').format(data.adultPrice) + " VNĐ";
 
 document.getElementById("childPrice").innerText =
-new Intl.NumberFormat('vi-VN').format(data.childPrice) + " VND";
+new Intl.NumberFormat('vi-VN').format(data.childPrice) + " VNĐ";
 
 
 document.getElementById("tourImage").src = data.imageUrl;
