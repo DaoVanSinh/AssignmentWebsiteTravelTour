@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image: url("../images/bg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.page-account {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.form-account {
+    background: #ffffff;
+    padding: 100px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.inner-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #1c1e21;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+.inner-group {
+    margin-bottom: 20px;
+}
+
+.inner-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #4b4f56;
+}
+
+.inner-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.inner-control:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.inner-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.inner-confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.inner-confirm label {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.inner-forgot-password {
+    color: #1877f2;
+    text-decoration: none;
+}
+
+.inner-forgot-password:hover {
+    text-decoration: underline;
+}
+
+.inner-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inner-button:hover {
+    background-color: #166fe5;
+}
+
+.inner-more {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #dddfe2;
+    padding-top: 20px;
+}
+
+.inner-more span {
+    color: #606770;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.inner-more a {
+    color: #42b72a;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.inner-more a:hover {
+    text-decoration: underline;
+}
+
+.page-account{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}

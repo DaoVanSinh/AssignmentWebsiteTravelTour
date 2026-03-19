@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Doanh Thu</title>
+    <link rel="stylesheet" href="../css/tour-admin.css"> <link rel="stylesheet" href="../css/report.css"> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 Báo Cáo Doanh Thu (Tháng 3/2026)</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Tổng Doanh Thu</h3>
+                <p class="money">125.500.000 đ</p>
+            </div>
+            <div class="stat-card">
+                <h3>Tổng Lượt Đặt (Bookings)</h3>
+                <p>42 Lượt</p>
+            </div>
+            <div class="stat-card">
+                <h3>Tour Bán Chạy Nhất</h3>
+                <p>Phú Quốc (6 ngày 5 đêm)</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="tour-admin.html" style="text-decoration: none; color: #007bff;">⬅ Quay lại Quản lý Tour</a>
+        </div>
+    </div>
+
+    <script src="../js/report.js"></script>
+</body>
+</html>

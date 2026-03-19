@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tour</title>
+    <link rel="stylesheet" href="../css/tour-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user || user.role !== "ADMIN") {
+            alert("Bạn không có quyền truy cập!");
+            window.location.href = "../pages/login.html";
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        
+    <h2>Quản lý Tour</h2>
+
+    <div class="top-bar">
+
+        <div class="left-group">
+            <button class="btn-add" onclick="openModal()">+ Thêm Tour</button>
+
+            <a href="revenue-report.html" class="btn-save link-btn" style="background-color: #17a2b8;">
+                📊 Xem Báo Cáo
+            </a>
+        </div>
+
+        <a href="../pages/tours.html" class="btn-home">
+            🏠 Trang chủ
+        </a>
+    </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Tour</th>
+                    <th>Thời gian</th>
+                    <th>Nơi khởi hành</th>
+                    <th>Giá Người Lớn</th>
+                    <th>Giá Trẻ Em</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tourTableBody">
+                </tbody>
+        </table>
+    </div>
+
+    <div id="tourModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Thông tin Tour</h3>
+            
+            <label>Tên tour:</label>
+            <input type="text" id="title" placeholder="VD: Tour Hạ Long - Cát Bà">
+
+            <label>Mô tả chi tiết:</label>
+            <textarea id="description" rows="3" placeholder="Nhập mô tả tour..."></textarea>
+
+            <label>Thời gian:</label>
+            <input type="text" id="duration" placeholder="VD: 3 ngày 2 đêm">
+
+            <label>Nơi khởi hành:</label>
+            <input type="text" id="departure" placeholder="VD: Hà Nội">
+
+            <label>Giá người lớn (VNĐ):</label>
+            <input type="number" id="adultPrice" placeholder="VD: 3500000">
+
+            <label>Giá trẻ em (VNĐ):</label>
+            <input type="number" id="childPrice" placeholder="VD: 1500000">
+
+            <label>Link hình ảnh:</label>
+            <input type="text" id="imageUrl" placeholder="Nhập link ảnh (.jpg, .png)">
+
+            <div class="modal-actions">
+                <button class="btn-save" onclick="saveTour()">Lưu</button>
+                <button class="btn-cancel" onclick="closeModal()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="box-shadow: none; background: transparent; padding-bottom: 0;">
+        <footer class="custom-footer">
+            
+
+            <div class="footer-links-row">
+                <div class="nav-links">
+                    <a href="#">Trang Chủ</a>
+                    <a href="#">Tin Tức</a>
+                    <a href="#">Tour Du Lịch</a>
+                    <a href="#">Dịch Vụ</a>
+                    <a href="#">Về Chúng Tôi</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; N8. Welcome.
+                </div>
+                
+                <div class="footer-text-center" style="color: #c92027; font-weight: bold; font-size: 16px; letter-spacing: 1px;">
+                    VIETNAM
+                </div>
+
+                <div class="policy-links">
+                    <a href="#">Điều khoản dịch vụ</a>
+                    <a href="#">Chính sách bảo mật</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../js/tour-service.js"></script>
+    <script src="../js/tour-controller.js"></script>
+</body>
+</html>
