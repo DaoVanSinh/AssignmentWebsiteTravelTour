@@ -1,5 +1,7 @@
 package com.tourvn.dto;
 
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.*;
 
 public class BookingRequest {
@@ -27,6 +29,9 @@ public class BookingRequest {
         private int numberOfPeople;
         
         private String specialRequest;
+        private LocalDate departureDate;
+        private int adultQuantity;
+        private int childQuantity;
     
     public String getCustomerName() {
         return customerName;
@@ -75,4 +80,29 @@ public class BookingRequest {
     public void setSpecialRequest(String specialRequest) {
         this.specialRequest = specialRequest;
     }
+
+    public LocalDate getDepartureDate() {
+    return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+    this.departureDate = departureDate;
+    }
+
+    public int getAdultQuantity() {
+        return adultQuantity;
+    }
+
+    public void setAdultQuantity(int adultQuantity) {
+        this.adultQuantity = adultQuantity;
+    }
+
+    public int getChildQuantity() {
+        return childQuantity;
+    }
+
+    public void setChildQuantity(int childQuantity) {
+        this.childQuantity = childQuantity;
+    }
+
 }

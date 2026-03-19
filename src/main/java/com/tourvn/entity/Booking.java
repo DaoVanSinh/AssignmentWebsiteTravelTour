@@ -1,6 +1,8 @@
 package com.tourvn.entity;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,13 +29,21 @@ public class Booking {
     @Column(name = "booking_date")
     private LocalDateTime bookingDate;
 
+    @Column(name = "departure_date")
+    private LocalDate departureDate;
+
     @Column(name = "special_request")
     private String specialRequest;
 
-    @Enumerated(EnumType.STRING) //trạng thái booking lưu dưới dạng text
+    @Column(name = "adult_quantity")
+    private int adultQuantity;
+
+    @Column(name = "child_quantity")
+    private int childQuantity;
+
+    @Enumerated(EnumType.STRING)
     private BookingStatus status;
 
-    // ===== GETTER & SETTER =====
 
     public Long getId() {
         return id;
@@ -105,5 +115,29 @@ public class Booking {
     
     public void setSpecialRequest(String specialRequest) {
         this.specialRequest = specialRequest;
+    }
+
+    public LocalDate getDepartureDate() {
+    return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+    this.departureDate = departureDate;
+    }
+
+    public int getAdultQuantity() {
+        return adultQuantity;
+    }
+
+    public void setAdultQuantity(int adultQuantity) {
+        this.adultQuantity = adultQuantity;
+    }
+
+    public int getChildQuantity() {
+        return childQuantity;
+    }
+
+    public void setChildQuantity(int childQuantity) {
+        this.childQuantity = childQuantity;
     }
 }

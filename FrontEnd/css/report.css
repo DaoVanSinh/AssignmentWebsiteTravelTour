@@ -1,0 +1,41 @@
+/* Thiết kế cho 3 thẻ thống kê trên cùng */
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    flex: 1;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 4px solid #28a745; /* Vạch xanh lá cây ở trên đầu */
+}
+
+.stat-card h3 {
+    margin: 0;
+    color: #555;
+    font-size: 16px;
+}
+
+.stat-card p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    color: #333;
+}
+
+.stat-card p.money {
+    color: #c92027; /* Màu đỏ nổi bật cho tiền */
+}
+
+/* Khung chứa biểu đồ */
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}

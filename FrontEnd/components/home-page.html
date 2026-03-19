@@ -1,0 +1,41 @@
+<main class="homepage">
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1 class="hero-title">Du lịch Việt Nam</h1>
+
+        <div class="search-box">
+
+          <div class="search-row">
+            <div class="input-field full-width">
+              <i class="fas fa-map-marker-alt"></i>
+              <input type="text" id="searchName" placeholder="Bạn muốn đi đâu?" />
+            </div>
+          </div>
+
+          <div class="search-row flex-group">
+
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" id="searchDeparture" placeholder="Nơi khởi hành" />
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-money-bill-wave"></i>
+              <input type="number" id="searchPrice" placeholder="Giá tối đa (VNĐ)" />
+            </div>
+
+            <button type="button" class="btn-search" onclick="searchTours()">
+              <i class="fas fa-search"></i> Tìm Kiếm
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="featured-tours-container">
+    <div class="tour-grid"></div>
+  </div>
+</main>

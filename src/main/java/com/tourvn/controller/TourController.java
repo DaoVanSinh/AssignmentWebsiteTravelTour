@@ -1,8 +1,9 @@
 package com.tourvn.controller;
 
 import com.tourvn.entity.Tour;
+import com.tourvn.repository.RepositoryTour;
 import com.tourvn.repository.TourRepository;
-
+import com.tourvn.entity.EntityTour;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,42 +16,57 @@ import java.util.List;
 public class TourController {
 
     @Autowired
+    private RepositoryTour repositoryTour;
+
+    @Autowired
     private TourRepository tourRepository;
 
-    // API lấy danh sách tour
+    // API lấy danh sách TẤT CẢ tour (Vẫn cần để hiển thị lên bảng)
     @GetMapping
     public List<Tour> getAllTours() {
         return tourRepository.findAll();
     }
 
-    @GetMapping("/api/admin/tours/{id}")
+    // API xem chi tiết 1 tour (MỚI THÊM theo ảnh)
+    @GetMapping("/{id}")
     public ResponseEntity<Tour> getTourById(@PathVariable Long id) {
-
-    Tour tour = tourRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Không tìm thấy tour"));
-
-    return ResponseEntity.ok(tour);
-}
-
-    // Admin: thêm tour
-    @PostMapping("/api/admin/tours")
-    public Tour createTour(@RequestBody Tour tour) {
-        return tourRepository.save(tour);
+        Tour tour = tourRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy Tour với id: " + id));
+        return ResponseEntity.ok(tour);
     }
 
+    // Admin: thêm tour
+    @PostMapping
+    public Tour createTour(@RequestBody Tour tour) {
+
+    Tour savedTour = tourRepository.save(tour);
+
+    EntityTour et = new EntityTour();
+    et.setNameTour(savedTour.getTitle());
+    et.setPrice(savedTour.getAdultPrice());
+    et.setDescription(savedTour.getDescription());
+    et.setDestination(savedTour.getDeparture());
+    et.setDurationDays(3); // tạm thời
+
+    repositoryTour.save(et);
+
+    return savedTour;
+}
+
     // Admin: cập nhật tour
-    @PutMapping("/admin/{id}")
+
+    @PutMapping("/{id}")
     public ResponseEntity<Tour> updateTour(@PathVariable Long id, @RequestBody Tour tourDetails) {
 
         Tour tour = tourRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy Tour với id: " + id));
 
-        tour.setName(tourDetails.getName());
+        tour.setTitle(tourDetails.getTitle());
         tour.setDescription(tourDetails.getDescription());
-        tour.setPrice(tourDetails.getPrice());
-        tour.setStartDate(tourDetails.getStartDate());
-        tour.setEndDate(tourDetails.getEndDate());
-        tour.setMaxPeople(tourDetails.getMaxPeople());
+        tour.setDuration(tourDetails.getDuration());
+        tour.setDeparture(tourDetails.getDeparture());
+        tour.setAdultPrice(tourDetails.getAdultPrice());
+        tour.setChildPrice(tourDetails.getChildPrice());
         tour.setImageUrl(tourDetails.getImageUrl());
 
         Tour updatedTour = tourRepository.save(tour);
@@ -59,7 +75,8 @@ public class TourController {
     }
 
     // Admin: xóa tour
-    @DeleteMapping("/admin/{id}")
+
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTour(@PathVariable Long id) {
 
         Tour tour = tourRepository.findById(id)

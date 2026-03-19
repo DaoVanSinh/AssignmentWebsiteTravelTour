@@ -8,6 +8,7 @@ import com.tourvn.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*")
 public class AuthController {
     private final UserService userService;
     
