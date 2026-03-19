@@ -6,14 +6,35 @@
     <title>Quản lý Tour</title>
     <link rel="stylesheet" href="../css/tour-admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user || user.role !== "ADMIN") {
+            alert("Bạn không có quyền truy cập!");
+            window.location.href = "../pages/login.html";
+        }
+    </script>
+
 </head>
 <body>
     <div class="container">
-        <h2>Quản lý Tour</h2>
-        <button class="btn-add" onclick="openModal()">+ Thêm Tour</button>
-            <a href="revenue-report.html" style="text-decoration: none; margin-left: 10px;">
-            <button class="btn-save" style="background-color: #17a2b8;">📊 Xem Báo Cáo</button>
+        
+    <h2>Quản lý Tour</h2>
+
+    <div class="top-bar">
+
+        <div class="left-group">
+            <button class="btn-add" onclick="openModal()">+ Thêm Tour</button>
+
+            <a href="revenue-report.html" class="btn-save link-btn" style="background-color: #17a2b8;">
+                📊 Xem Báo Cáo
             </a>
+        </div>
+
+        <a href="../pages/tours.html" class="btn-home">
+            🏠 Trang chủ
+        </a>
+    </div>
 
         <table>
             <thead>

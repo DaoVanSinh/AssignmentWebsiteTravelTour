@@ -117,6 +117,18 @@
     <script src="../js/config.js"></script>
 
 <script>
+    function loadComponent(id, path) {
+    fetch(path)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById(id).innerHTML = data;
+        if(id === "header-placeholder"){
+            const script = document.createElement("script");
+            script.src = "../js/auth-check.js";
+            document.body.appendChild(script);
+        }
+    });
+    }
     loadComponent("header-placeholder","../components/header.html");
     loadComponent("footer","../components/footer.html");
 </script>

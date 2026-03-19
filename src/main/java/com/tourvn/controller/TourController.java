@@ -4,8 +4,6 @@ import com.tourvn.entity.Tour;
 import com.tourvn.repository.RepositoryTour;
 import com.tourvn.repository.TourRepository;
 import com.tourvn.entity.EntityTour;
-import com.tourvn.repository.RepositoryTour;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -9,20 +9,36 @@ async function getTours() {
 
 // 2. Thêm Tour mới
 async function addTour(tourData) {
-    await fetch(API_URL, {
+    const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(tourData)
     });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Backend lỗi:", errorText);
+        throw new Error("Thêm tour thất bại");
+    }
+
+    return await response.json();
 }
 
 // 3. Cập nhật Tour (Sửa)
 async function updateTour(id, tourData) {
-    await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(tourData)
     });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Backend lỗi:", errorText);
+        throw new Error("Cập nhật thất bại");
+    }
+
+    return await response.json();
 }
 
 // 4. Xóa Tour

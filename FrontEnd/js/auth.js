@@ -27,7 +27,16 @@ if (loginForm) {
 
             alert("Đăng nhập thành công");
 
-            window.location.href = "../pages/tours.html";
+            localStorage.setItem("user", JSON.stringify(data));
+
+            alert("Đăng nhập thành công");
+
+
+            if (data.role === "ADMIN") {
+                window.location.href = "../pages/tour-admin.html";
+            } else {
+                window.location.href = "../pages/tours.html";
+            }
         }).catch(error => {
             alert("Sai email hoặc mật khẩu");
             console.log(error);
