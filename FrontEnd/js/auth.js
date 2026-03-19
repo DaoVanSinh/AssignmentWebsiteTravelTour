@@ -40,7 +40,7 @@ if (registerForm) {
         const email = document.getElementById("email").value.trim();
         const phone = document.getElementById("phone").value.trim();
         const password = document.getElementById("password").value.trim();
-        const cfPassword = document.getElementById("confirmPassword").value.trim();
+        const cfPassword = document.getElementById("cfPassword").value.trim();
         const agree = document.getElementById("agree").checked;
 
         if (password !== cfPassword) {
