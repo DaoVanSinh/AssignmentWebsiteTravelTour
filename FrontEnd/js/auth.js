@@ -18,7 +18,7 @@ if (loginForm) {
         });
         const user = await response.json();
         if (response.ok) {
-            localStorage.setItem("role", user.role);
+            localStorage.setItem("user", JSON.stringify(user));
             if (user.role === "ADMIN") {
                 window.location.href = "../pages/tour-admin.html";
             } else {
