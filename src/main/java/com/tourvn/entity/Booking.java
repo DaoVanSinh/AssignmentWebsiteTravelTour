@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class Booking {
 
     @Id // khóa chính
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  //
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "customer_name", nullable = false)

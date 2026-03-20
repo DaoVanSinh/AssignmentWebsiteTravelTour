@@ -17,7 +17,7 @@ import java.util.List;
 @Service    //tầng xử lý logic
 public class BookingServiceImpl implements BookingService {
 
-    @Autowired     //lưu database
+    @Autowired
     private BookingRepository bookingRepository;
 
     @Autowired
@@ -75,7 +75,6 @@ public class BookingServiceImpl implements BookingService {
         // 3. Cập nhật trạng thái
         booking.setStatus(BookingStatus.CANCELLED);
 
-        // 4. Lưu lại
         return bookingRepository.save(booking);
     }
     
