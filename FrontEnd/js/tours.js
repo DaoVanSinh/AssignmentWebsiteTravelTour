@@ -6,6 +6,15 @@ const payment = params.get("payment");
 if (payment === "success") {
     alert("Thanh toán thành công!");
 }
+else if (payment === "fail") {
+    alert("Thanh toán thất bại!");
+}
+else if (payment === "error") {
+    alert("Có lỗi xảy ra!");
+}
+if (payment) {
+    window.history.replaceState({}, document.title, "tours.html");
+}
 document.addEventListener("DOMContentLoaded", loadTours);
 
 async function loadTours() {

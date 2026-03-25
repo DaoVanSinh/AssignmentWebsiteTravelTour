@@ -1,42 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="review-container">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/review.css">
-</head>
+    <h2>Đánh giá của khách hàng</h2>
 
-<body>
-    <div class="main">
+    <div id="review-list"></div>
 
-        <h2>HÃY ĐỂ LẠI ĐÁNH GIÁ CỦA BẠN</h2>
+    <button onclick="toggleReviewForm()" class="review-btn">
+        Viết đánh giá
+    </button>
 
-        <div class="main-from">
+    <div class="review-form" id="review-form" style="display:none;">
 
-            <input type="text" placeholder="Tên :" id="name">
-            <input type="email" placeholder="Email :" id="email">
-        </div>
+        <h3>Hãy để lại đánh giá</h3>
 
-        <input type="text" placeholder="Tiêu đề : " id="title">
+        <input type="text" id="name" placeholder="Tên của bạn">
+        <input type="email" id="email" placeholder="Email">
 
-        <textarea placeholder="Nội dung : " id="comment"></textarea>
+        <textarea id="comment" placeholder="Nội dung đánh giá"></textarea>
 
-        <h3>Đánh giá</h3>
+        <h4>Đánh giá</h4>
 
         <div class="stars">
-            <i class="star" data-value="1">★</i>
-            <i class="star" data-value="2">★</i>
-            <i class="star" data-value="3">★</i>
-            <i class="star" data-value="4">★</i>
-            <i class="star" data-value="5">★</i>
-
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
         </div>
 
-        <button onclick="submit()">ĐĂNG BÀI ĐÁNH GIÁ</button>
-    </div>
-    <script src="../js/review.js"></script>
-</body>
+        <button onclick="submitReview()">Gửi đánh giá</button>
 
-</html>
+    </div>
+
+</div>

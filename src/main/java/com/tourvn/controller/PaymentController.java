@@ -87,11 +87,11 @@ public class PaymentController {
                 System.out.println("Payment updated!");
             }
 
-            response.sendRedirect("http://localhost:5500/pages/tours.html?payment=success");
+            response.sendRedirect("http://localhost:5500/frontend/pages/tours.html?payment=success");
 
         } else {
 
-            response.sendRedirect("http://localhost:5500/pages/tours.html?payment=fail");
+            response.sendRedirect("http://localhost:5500/frontend/pages/tours.html?payment=fail");
 
         }
 
@@ -99,7 +99,7 @@ public class PaymentController {
 
         e.printStackTrace();
 
-        response.sendRedirect("http://localhost:5500/pages/tours.html?payment=error");
+        response.sendRedirect("http://localhost:5500/frontend/pages/tours.html?payment=error");
 
     }
 }

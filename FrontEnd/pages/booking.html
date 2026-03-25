@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../css/booking.css">
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/review.css">
 
 </head>
 
@@ -28,7 +29,7 @@
             <p>Mã tour: <span id="tourCode">...</span></p>
             <p>Thời gian: <span id="duration">...</span></p>
             <p>Giá: <span id="price">...</span></p>
-            <p class="tour-description" id="tourDescription"></p>
+            <p class="tour-description" id="tourDescriptionDetail"></p>
             <p>Nơi khởi hành: <span id="location">...</span></p>
         </div>
 
@@ -52,7 +53,7 @@
             </tr>
 
         </table>
-
+        <div id="review-section"></div>
     </div>
 
 <div class="right-sidebar">
@@ -109,6 +110,7 @@
 </div>
 
 <script src="../js/booking.js"></script>
+<script src="../js/review.js"></script>
 
 </div>
 
@@ -122,6 +124,9 @@
     .then(response => response.text())
     .then(data => {
         document.getElementById(id).innerHTML = data;
+        if (id === "review-section") {
+            initReview();
+        }
         if(id === "header-placeholder"){
             const script = document.createElement("script");
             script.src = "../js/auth-check.js";
@@ -130,6 +135,7 @@
     });
     }
     loadComponent("header-placeholder","../components/header.html");
+    loadComponent("review-section", "../pages/review.html");
     loadComponent("footer","../components/footer.html");
 </script>
 

@@ -7,6 +7,7 @@ import com.tourvn.dto.ReviewRequest;
 import com.tourvn.entity.Review;
 import com.tourvn.service.ReviewService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/reviews")
 public class ReviewController {
