@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Giới thiệu</title>
+    <link rel="stylesheet" href="../css/introduce.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+      <div class="content">
+        <h1>Giới thiệu về HUMGTRAVEL.com</h1>
+
+        <p>
+          Thành lập năm 2010, HUMGTRAVEL.com với hơn 31 năm kinh nghiệm trong
+          lĩnh vực Du lịch - Khách sạn. HUMGTRAVEL.com tiên phong trong việc
+          sáng tạo các sản phẩm du lịch tiện ích dành cho khách hàng nội địa.
+        </p>
+
+        <p>
+          Liên tục tăng trưởng mạnh qua nhiều năm, HUMGTRAVEL.com hiện là OTA
+          hàng đầu Việt Nam trong phân khúc cao cấp với hệ thống khoảng 2.500
+          khách sạn tại Việt Nam và hơn 30.000 khách sạn.
+        </p>
+
+        <p>
+          Với mục tiêu mang đến cho khách hàng “Trải nghiệm kỳ nghỉ tuyệt vời”,
+          HUMGTRAVEL.com kỳ vọng trở thành nền tảng du lịch nghỉ dưỡng số 1 cho
+          khách hàng trong 5 năm tới.
+        </p>
+
+        <p>
+          Dòng sản phẩm chính của HUMGTRAVEL là Combo du lịch – sản phẩm cung
+          cấp đầy đủ cho một kỳ nghỉ bao gồm phòng khách sạn, vé máy bay, đưa
+          đón, ăn uống, khám phá và trải nghiệm tại điểm đến. Với combo du lịch,
+          khách hàng không cần băn khoăn chọn lựa hoặc mất thời gian đặt từng
+          dịch vụ riêng lẻ.
+        </p>
+
+        <p>
+          Để đảm bảo cho khách hàng một “Trải nghiệm kỳ nghỉ tuyệt vời”, chúng
+          tôi áp dụng công nghệ vào việc đọc hiểu nhu cầu của thị trường, nghiên
+          cứu phát triển sản phẩm và gợi ý những sản phẩm du lịch tốt nhất phù
+          hợp với từng khách hàng.
+        </p>
+
+        <p>
+          Khách hàng có thể đặt dịch vụ với HUMGTRAVEL.com qua nhiều kênh: trực
+          tiếp tại website, gọi điện hotline, đặt qua chatbot, ứng dụng di động
+          hoặc mạng xã hội.
+        </p>
+
+        <div class="contact-info">
+          <h4>ĐỊA CHỈ</h4>
+          <p>
+            <strong>Trụ sở chính:</strong> Số 18, Phố Viên, Bắc Từ Liêm, Hà Nội
+          </p>
+          <p>
+            <strong>Hotline:</strong> <a href="tel:0123456789">0123.456.789</a>
+          </p>
+          <p>
+            <strong>Website:</strong>
+            <a href="../Pages/tours.html">www.HUMGTRAVEL.com.vn</a>
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:contactHUMG@travel.com.vn"
+              >contactHUMG@travel.com.vn</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="footer-placeholder"></div>
+
+    <script>
+      function loadComponent(id, path) {
+    fetch(path)
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById(id).innerHTML = data;
+
+        if(id === "header-placeholder"){
+            const script = document.createElement("script");
+            script.src = "../js/auth-check.js";
+            document.body.appendChild(script);
+        }
+    });
+}
+
+      loadComponent("header-placeholder", "../components/header.html");
+      loadComponent("footer-placeholder", "../components/footer.html");
+    </script>
+    <script src="../js/tours.js"></script>
+  </body>
+</html>
