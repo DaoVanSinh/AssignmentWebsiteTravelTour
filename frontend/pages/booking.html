@@ -73,7 +73,8 @@
             <input type="text" id="phone" placeholder="Nhập số điện thoại" required > <p class="error" id="phoneError"></p>
 
             <label>Email</label>
-            <input type="email" id="email" placeholder="Nhập địa chỉ email" required>
+            <input type="email" id="bookingEmail" placeholder="Nhập địa chỉ email" required>
+            <p class="error" id="emailError"></p>
 
             <label>Ngày khởi hành</label>
             <input type="date" id="departureDate" required>
@@ -110,13 +111,13 @@
 </div>
 
 <script src="../js/booking.js"></script>
-<script src="../js/review.js"></script>
 
 </div>
 
 <div id="footer"></div>
 
     <script src="../js/config.js"></script>
+    <script src="../js/review.js"></script>
 
 <script>
     function loadComponent(id, path) {
@@ -125,7 +126,9 @@
     .then(data => {
         document.getElementById(id).innerHTML = data;
         if (id === "review-section") {
+            if (typeof initReview === "function") {
             initReview();
+            }
         }
         if(id === "header-placeholder"){
             const script = document.createElement("script");
