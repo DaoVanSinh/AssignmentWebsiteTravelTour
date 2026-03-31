@@ -123,24 +123,22 @@ if(forgotForm){
 
 //reset-password
 const resetForm = document.getElementById("reset-password-form");
-
-if(resetForm){
-    resetForm.addEventListener("submit",async function (e){
+if (resetForm) {
+    resetForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
         const email = localStorage.getItem("resetEmail");
         const newPassword = document.getElementById("newPassword").value.trim();
         const cfPassword = document.getElementById("cfPassword").value.trim();
 
-        if(newPassword !== cfPassword){
+        if (newPassword !== cfPassword) {
             alert("Mật khẩu không khớp! Vui lòng nhập lại");
             return;
         }
-
-        try{
-            const response = await fetch("http://localhost:8080/api/auth/forgot-password",{
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/forgot-password", {
                 method: "POST",
-                headers:{
+                headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
@@ -148,17 +146,15 @@ if(resetForm){
                     newPassword: newPassword
                 })
             });
-
             const result = await response.json();
-
-            if(response.ok){
+            if (response.ok) {
                 alert("Đổi mật khẩu thành công!");
-                window.location.href="../pages/login.html";
-            }else{
+                window.location.href = "../pages/login.html";
+            } else {
                 console.error(error);
                 alert(result.message || "Đổi mật khẩu thất bại");
             }
-        }catch{
+        } catch {
             console.error(error);
             alert("Không thể kết nối server");
         }
