@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 
 <body>
+    <div id="header-placeholder"></div>
     <h3 class="title">THÔNG TIN THANH TOÁN</h3>
 
     <div class="main">
 
         <div class="left-form">
+            <h4 style="color:#1a73e8; margin-top:0;">THÔNG TIN TOUR</h4>
 
             <p>Mã tour: <span id="tourCode"></span></p>
 
@@ -30,6 +35,7 @@
         </div>
 
         <div class="right-from">
+            <h4 style="color:#1a73e8; margin-top:0;">THÔNG TIN KHÁCH HÀNG</h4>
 
             <p>Họ và tên: <span id="customerName"></span></p>
 
@@ -52,8 +58,26 @@
     </div>
 
     <button type="button" id="buy">Thanh toán</button>
-
+    <div id="footer-placeholder"></div>
 </body>
+<script>
+    function loadComponent(id, path) {
+        fetch(path)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(id).innerHTML = data;
+
+                if (id === "header-placeholder") {
+                    const script = document.createElement("script");
+                    script.src = "../js/auth-check.js";
+                    document.body.appendChild(script);
+                }
+            });
+    }
+
+    loadComponent("header-placeholder", "../components/header.html");
+    loadComponent("footer-placeholder", "../components/footer.html");
+</script>
 
 <script src="../js/payment.js"></script>
 
