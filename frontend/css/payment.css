@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #f4f6f9;
     margin: 0;
 }
 
@@ -8,7 +8,9 @@ body {
     text-align: center;
     margin-top: 40px;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #1a73e8;
 }
 
 .main {
@@ -16,44 +18,65 @@ body {
     margin: auto;
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .left-form {
     width: 45%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    background-color: #ffffff;
+    padding: 22px 25px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .right-from {
     width: 45%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    background-color: #ffffff;
+    padding: 22px 25px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .left-form p {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+    padding-bottom: 6px;
 }
 
 .right-from p {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+    padding-bottom: 6px;
+}
+
+.left-form span {
+    font-weight: bold;
+    color: #222;
+}
+
+.right-from span {
+    font-weight: bold;
+    color: #222;
 }
 
 #totalPrice {
     color: red;
+    font-size: 18px;
     font-weight: bold;
 }
 
-
 #buy {
     display: block;
-    margin: 35px auto;
-    padding: 14px 40px;
+    margin: 40px auto;
+    padding: 14px 45px;
     background: #e60000;
     color: white;
     border: none;
@@ -64,4 +87,14 @@ body {
 
 #buy:hover {
     background: #cc0000;
+}
+
+.left-form:hover {
+    transform: translateY(-3px);
+    transition: 0.2s;
+}
+
+.right-from:hover {
+    transform: translateY(-3px);
+    transition: 0.2s;
 }

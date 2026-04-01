@@ -1,12 +1,12 @@
 //login
 const loginForm = document.getElementById("login-form");
 if (loginForm) {
-    loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+    loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-
-        fetch("http://localhost:8080/api/auth/login", {
+        const response = await fetch("http://localhost:8080/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -15,39 +15,23 @@ if (loginForm) {
                 email: email,
                 password: password
             })
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error("Đăng nhập thất bại");
-            }
-            return response.json();
-        }).then(data => {
-            console.log("Đăng nhập thành công: ", data);
-
-            localStorage.setItem("user", JSON.stringify(data));
-
-            alert("Đăng nhập thành công");
-
-            localStorage.setItem("user", JSON.stringify(data));
-
-            alert("Đăng nhập thành công");
-
-
-            if (data.role === "ADMIN") {
+        });
+        const user = await response.json();
+        if (response.ok) {
+            localStorage.setItem("user", JSON.stringify(user));
+            if (user.role === "ADMIN") {
                 window.location.href = "../pages/tour-admin.html";
             } else {
                 window.location.href = "../pages/tours.html";
             }
-        }).catch(error => {
-            alert("Sai email hoặc mật khẩu");
-            console.log(error);
-        });
+        } else {
+            alert("Sai tài khoản hoặc mật khẩu");
+        }
     });
 }
 
-
 //register
 const registerForm = document.getElementById("register-form");
-
 if (registerForm) {
     registerForm.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -56,27 +40,23 @@ if (registerForm) {
         const email = document.getElementById("email").value.trim();
         const phone = document.getElementById("phone").value.trim();
         const password = document.getElementById("password").value.trim();
-        const cfPassword = document.getElementById("confirmPassword").value.trim();
+        const cfPassword = document.getElementById("cfPassword").value.trim();
         const agree = document.getElementById("agree").checked;
-
 
         if (password !== cfPassword) {
             alert("Mật khẩu không khớp");
             return;
         }
-
-        if(!agree){
+        if (!agree) {
             alert("Vui lòng chấp nhận điều khoản");
             return;
         }
-
         const data = {
             fullName: fullName,
             email: email,
             phone: phone,
             password: password
         };
-
         try {
             const response = await fetch("http://localhost:8080/api/auth/register", {
                 method: "POST",
@@ -85,9 +65,7 @@ if (registerForm) {
                 },
                 body: JSON.stringify(data)
             });
-
             const result = await response.json();
-
             if (response.ok) {
                 alert("Đăng ký thành công");
                 window.location.href = "../pages/login.html";
@@ -103,22 +81,29 @@ if (registerForm) {
 
 //forgot-password
 const forgotForm = document.getElementById("forgot-password-form");
-
-if(forgotForm){
-    forgotForm.addEventListener("submit",function(e){
+if (forgotForm) {
+    forgotForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const email = document.getElementById("email").value.trim();
-
-        if(!email){
-            alert("Vui lòng nhập email");
+        const email = document.getElementById("email").value;
+        const response = await fetch("http://localhost:8080/api/auth/checkEmail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email
+            })
+        });
+        const exists = await response.json();
+        if (!exists) {
+            alert("Email không tồn tại");
             return;
         }
-
-        localStorage.setItem("resetEmail",email);
-
+        localStorage.setItem("resetEmail", email);
         window.location.href = "../pages/reset-password.html";
-    })
+    });
+
 }
 
 //reset-password
